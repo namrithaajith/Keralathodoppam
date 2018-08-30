@@ -1,0 +1,101 @@
+<resources>
+    <string name="app_name">കേരളത്തോടൊപ്പം</string>
+
+    <string name="unknown_sign_in_response">Unknown response from AuthUI sign-in</string>
+    <string name="unknown_response">Unexpected onActivityResult response code</string>
+    <string name="sign_in_cancelled">Sign in cancelled</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="unknown_error">An unknown error occurred</string>
+    <string name="sign_out_failed">Sign out failed</string>
+    <string name="delete_account_failed">Delete account failed</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="permissions_not_granted_location_access">App needs to access the device location</string>
+    <string name="permission_denied">App wasnt granted permission.Grant now</string>
+    <string name="permission">Permission Request</string>
+    <string name="permission_callphone">App needs to CALLPHONE permission to make phone calls</string>
+
+    <string name="login">Login</string>
+    <string name="login_header">നമുക്ക് കൈകോർക്കാം</string>
+    <string name="menu_home">ഹോം</string>
+    <string name="menu_logout">ലോഗൗട്ട് </string>
+    <string name="menu_delete_account">അക്കൗണ്ട് ഇല്ലാതാക്കുക</string>
+
+    <string name="sevanam">സേവനം</string>
+    <string name="camps">ക്യാമ്പുകൾ</string>
+    <string name="ariyippukal">അറിഞ്ഞിരിക്കുക</string>
+    <string name="availableservices">ലഭ്യമായ സേവനങ്ങൾ</string>
+    <string name="map">ഭൂപടം</string>
+
+    <string-array name="sevanam_types">
+        <item>സേവനം നൽകൂ</item>
+        <item>സേവനം ലഭ്യമാക്കുക</item>
+        <item>സേവനത്തിന് ആവശ്യപ്പെടാം</item>
+        <item>സേവനം ആവശ്യമുള്ളവർ</item>
+    </string-array>
+    <string-array name="sevanam_types_imageUrls">
+        <item>givesevanam</item>
+        <item>sevanamkittuka1</item>
+        <item>tellrequirements</item>
+        <item>whorequireservice1</item>
+    </string-array>
+
+    <string-array name="camprequirementtype">
+        <item>ക്യാമ്പുകളുടെ അവശ്യങ്ങൾ കാണുക</item>
+        <item>ക്യാമ്പുകളുടെ അവശ്യങ്ങൾ അറിയിക്കുക</item>
+    </string-array>
+    <string-array name="camprequirementtype_imageUrls">
+        <item>viewcamprequirements</item>
+        <item>tellrequirements</item>
+    </string-array>
+    <string-array name="services">
+        <item>വൃത്തിയാക്കൽ</item>
+        <item>ഇലക്ട്രിക്കൽ</item>
+        <item>പ്ലംബിംഗ്</item>
+        <item>മെക്കാനിക്കൽ</item>
+        <item>സിവിൽ</item>
+        <item>പെയിന്റിംഗ്</item>
+        <item>ആരോഗ്യ സേവനങ്ങൾ</item>
+        <item>ഇൻഷുറൻസ് സേവനങ്ങൾ</item>
+    </string-array>
+    <string name="cleaning">വൃത്തിയാക്കൽ</string>
+    <string name="electrical">ഇലക്ട്രിക്കൽ</string>
+    <string name="plumbing">പ്ലംബിംഗ്</string>
+    <string name="mechanical">മെക്കാനിക്കൽ</string>
+    <string name="civil">സിവിൽ</string>
+    <string name="painting">പെയിന്റിംഗ്</string>
+    <string name="health">ആരോഗ്യ സേവനങ്ങൾ</string>
+    <string name="insurance">ഇൻഷുറൻസ് സേവനങ്ങൾ</string>
+
+    <string-array name="services_url">
+        <item>cleaning</item>
+        <item>electrical</item>
+        <item>plumbing</item>
+        <item>mechanical</item>
+        <item>civil</item>
+        <item>painting</item>
+        <item>healthservices</item>
+        <item>insuranceservices</item>
+    </string-array>
+
+    <string name="hint_name">നിങ്ങളുടെ പേര് നൽകുക</string>
+    <string name="hint_phone">നിങ്ങളുടെ മൊബൈൽ നമ്പർ</string>
+    <string name="hint_areaofservice">നിങ്ങളുടെ സേവന മേഖല</string>
+    <string name="hint_area">നിങ്ങളുടെ പ്രദേശം</string>
+    <string name="hint_district">നിങ്ങളുടെ ജില്ല</string>
+    <string name="hint_or">അല്ലെങ്കിൽ നിങ്ങളുടെ ആവശ്യങ്ങൾ ലിസ്റ്റുചെയ്യുന്ന ചിത്രം അപ്ലോഡുചെയ്യുക</string>
+    <string name="hint_address">നിങ്ങളുടെ വിലാസം</string>
+    <string name="hint_asktoclickmap">ദയവായി മാപ്പ് ഐക്കൺ ക്ലിക്കുചെയ്ത് കൃത്യമായ വിലാസം അടയാളപ്പെടുത്തുക</string>
+    <string name="hint_requiredservice">നിങ്ങൾക്ക് ആവശ്യമുള്ള സേവനം</string>
+    <string name="markerdrag">നിങ്ങളുടെ ലൊക്കേഷനിലേക്ക് മാർക്കർ ക്ലിക്കുചെയ്ത് വലിച്ചിടുക</string>
+    <string name="selectpic">തിരഞ്ഞെടുക്കുക</string>
+    <string name="submit">സമർപ്പിക്കുക</string>
+    <string name="call">വിളിക്കാം</string>
+    <string name="hint_campname">ക്യാമ്പിന്റെ പേര്</string>
+    <string name="hint_needs">ആവശ്യങ്ങൾ അറിയിക്കുക</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

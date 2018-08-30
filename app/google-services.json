@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "782074612038",
+    "firebase_url": "https://natural-calamity.firebaseio.com",
+    "project_id": "natural-calamity",
+    "storage_bucket": "natural-calamity.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782074612038:android:be8e8b5073844f02",
+        "android_client_info": {
+          "package_name": "com.mobioetech.keralathodoppam.keralathodoppam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "782074612038-ci2f6784i72u7g8d6igbb4fjv1ch2h7r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobioetech.keralathodoppam.keralathodoppam",
+            "certificate_hash": "e6bd23c7980b511fb9409a7e8873731d1b15ec84"
+          }
+        },
+        {
+          "client_id": "782074612038-r45embolpf5no2o3nk99csjhnvipnrpq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5fcRPzkF1KCWS01ANp1oE_v7a1X24Tqc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "782074612038-r45embolpf5no2o3nk99csjhnvipnrpq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
