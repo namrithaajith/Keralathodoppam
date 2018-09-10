@@ -4,8 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -37,6 +35,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -44,7 +43,8 @@ import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-public class ProvideCampRequirements extends AppCompatActivity {
+
+public class ProvideCampRequirementscopy31aug extends AppCompatActivity {
 
     String serviceType;
     private final int PICK_IMAGE_REQUEST = 200;
@@ -82,6 +82,9 @@ public class ProvideCampRequirements extends AppCompatActivity {
     @BindView(R.id.bt_submit)
     TextView mBtSubmit;
 
+    @BindView(R.id.bt_selectpic)
+    ImageView btnselectpic;
+
     @BindView(R.id.bt_takephoto)
     ImageView btntakephoto;
 
@@ -92,7 +95,7 @@ public class ProvideCampRequirements extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_provide_camp_requirements);
+        setContentView(R.layout.activity_provide_camp_requirementscopy31aug);
         ButterKnife.bind(this);
         addTextWatchers();
 
@@ -112,6 +115,14 @@ public class ProvideCampRequirements extends AppCompatActivity {
                 onLaunchCamera();
             }
         });
+        btnselectpic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                chooseImage();
+
+            }
+        });
 
         mBtSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +138,7 @@ public class ProvideCampRequirements extends AppCompatActivity {
 
                 if(filePath != null)
                 {
-                    final ProgressDialog progressDialog = new ProgressDialog(ProvideCampRequirements.this);
+                    final ProgressDialog progressDialog = new ProgressDialog(ProvideCampRequirementscopy31aug.this);
                     progressDialog.setTitle("Uploading...");
                     progressDialog.show();
 
@@ -157,10 +168,9 @@ public class ProvideCampRequirements extends AppCompatActivity {
                                 campNeeds.setCampname(mEtNameView.getText().toString());
                                 campNeeds.setPhonenumber(mEtPhoneView.getText().toString());
                                 campNeeds.setTimestamp(ts);
-                                campNeeds.setImagePath(mCurrentPhotoPath);
                                 ref_campneeds.setValue(campNeeds);
 
-                                Intent intent = new Intent(ProvideCampRequirements.this,SubmissionSuccessfulActivity.class);
+                                Intent intent = new Intent(ProvideCampRequirementscopy31aug.this,SubmissionSuccessfulActivity.class);
                                 startActivity(intent);
 
                             } else {
@@ -172,7 +182,7 @@ public class ProvideCampRequirements extends AppCompatActivity {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     progressDialog.dismiss();
-                                    Toast.makeText(ProvideCampRequirements.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ProvideCampRequirementscopy31aug.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
 
@@ -191,7 +201,7 @@ public class ProvideCampRequirements extends AppCompatActivity {
                     campNeeds.setTimestamp(ts);
                     ref_campneeds.setValue(campNeeds);
 
-                    Intent intent = new Intent(ProvideCampRequirements.this,SubmissionSuccessfulActivity.class);
+                    Intent intent = new Intent(ProvideCampRequirementscopy31aug.this,SubmissionSuccessfulActivity.class);
                     startActivity(intent);
                 }
 
@@ -291,6 +301,12 @@ public class ProvideCampRequirements extends AppCompatActivity {
         }
     }
 
+    private void chooseImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -298,11 +314,7 @@ public class ProvideCampRequirements extends AppCompatActivity {
         Log.i(LOG,"requestCode------->"+requestCode);
             if (requestCode == REQUEST_PICTURE_CAPTURE && resultCode == RESULT_OK) {
 
-                try {
-                    setPic();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                setPic();
 
                 File f = new File(mCurrentPhotoPath);
                 filePath = Uri.fromFile(f);
@@ -310,9 +322,36 @@ public class ProvideCampRequirements extends AppCompatActivity {
 
             }
 
+            else if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                    && data != null && data.getData() != null )
+            {
+//                Log.i(LOG,"inside PICK_IMAGE_REQUEST------->"+requestCode);
+//                filePath = data.getData();
+//                Log.i(LOG,"filepath---tostring------->"+filePath.toString());
+//                try {
+//                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+//                    imgselected.setImageBitmap(bitmap);
+//                }
+//                catch (IOException e)
+//                {
+//                    e.printStackTrace();
+//                }
+
+                filePath = data.getData();
+
+                Bitmap bm = null;
+                try {
+                    bm = BitmapFactory.decodeStream(
+                            getContentResolver().openInputStream(filePath));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                imgselected.setImageBitmap(bm);
             }
 
-    private void setPic() throws IOException {
+            }
+
+    private void setPic() {
         // Get the dimensions of the View
         int targetW = imgselected.getWidth();
         int targetH = imgselected.getHeight();
@@ -333,40 +372,8 @@ public class ProvideCampRequirements extends AppCompatActivity {
         bmOptions.inPurgeable = true;
 
         Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+        imgselected.setImageBitmap(bitmap);
 
-
-        ExifInterface ei = new ExifInterface(mCurrentPhotoPath);
-        int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION,
-                ExifInterface.ORIENTATION_UNDEFINED);
-
-        Bitmap rotatedBitmap = null;
-        Log.i(LOG,"Orientation------>"+orientation);
-        switch(orientation) {
-
-            case ExifInterface.ORIENTATION_ROTATE_90:
-                rotatedBitmap = rotateImage(bitmap, 90);
-                break;
-
-            case ExifInterface.ORIENTATION_ROTATE_180:
-                rotatedBitmap = rotateImage(bitmap, 180);
-                break;
-
-            case ExifInterface.ORIENTATION_ROTATE_270:
-                rotatedBitmap = rotateImage(bitmap, 270);
-                break;
-
-            case ExifInterface.ORIENTATION_NORMAL:
-            default:
-                rotatedBitmap = bitmap;
-        }
-        imgselected.setImageBitmap(rotatedBitmap);
-
-    }
-    public static Bitmap rotateImage(Bitmap source, float angle) {
-        Matrix matrix = new Matrix();
-        matrix.postRotate(angle);
-        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
-                matrix, true);
     }
 
 

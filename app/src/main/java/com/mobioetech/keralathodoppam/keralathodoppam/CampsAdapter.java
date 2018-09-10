@@ -2,7 +2,6 @@ package com.mobioetech.keralathodoppam.keralathodoppam;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,9 +52,12 @@ public class CampsAdapter extends RecyclerView.Adapter<CampsAdapter.ViewHolder> 
             public void onClick(View view) {
                 Intent intent = null;
                 switch(position){
-                    case 0:Uri uriUrl = Uri.parse("https://keralarescue.in/district_needs/");
-                        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
-                        context.startActivity(launchBrowser);
+//                    case 0:Uri uriUrl = Uri.parse("https://keralarescue.in/district_needs/");
+//                        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+//                        context.startActivity(launchBrowser);
+                    case 0:intent = new Intent(context,ViewCampRequirementsSelectDistrict.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
                             break;
                     case 1:intent = new Intent(context,ProvideCampRequirements.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

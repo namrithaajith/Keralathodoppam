@@ -15,6 +15,7 @@
     <string name="permission_denied">App wasnt granted permission.Grant now</string>
     <string name="permission">Permission Request</string>
     <string name="permission_callphone">App needs to CALLPHONE permission to make phone calls</string>
+    <string name="share_chooser">Share via</string>
 
     <string name="login">Login</string>
     <string name="login_header">നമുക്ക് കൈകോർക്കാം</string>
@@ -79,6 +80,25 @@
         <item>insuranceservices</item>
     </string-array>
 
+    <string-array name="districts">
+        <item>BANGALORE URBAN</item>
+        <item>ERNAKULAM</item>
+        <item>THRISSUR</item>
+        <item>PATHANAMTHITTA</item>
+        <item>ALAPPUZHA</item>
+        <item>WAYANAD</item>
+        <item>KOZHIKODE</item>
+        <item>IDUKKI</item>
+        <item>KANNUR</item>
+        <item>KASARAGOD</item>
+        <item>KOLLAM</item>
+        <item>KOTTAYAM</item>
+        <item>MALAPPURAM</item>
+        <item>PALAKKAD</item>
+
+        <item>THIRUVANANTHAPURAM</item>
+    </string-array>
+
     <string name="hint_name">നിങ്ങളുടെ പേര് നൽകുക</string>
     <string name="hint_phone">നിങ്ങളുടെ മൊബൈൽ നമ്പർ</string>
     <string name="hint_areaofservice">നിങ്ങളുടെ സേവന മേഖല</string>
@@ -90,11 +110,15 @@
     <string name="hint_requiredservice">നിങ്ങൾക്ക് ആവശ്യമുള്ള സേവനം</string>
     <string name="markerdrag">നിങ്ങളുടെ ലൊക്കേഷനിലേക്ക് മാർക്കർ ക്ലിക്കുചെയ്ത് വലിച്ചിടുക</string>
     <string name="selectpic">തിരഞ്ഞെടുക്കുക</string>
+    <string name="takephoto">ഫോട്ടോ എടുക്കുക</string>
     <string name="submit">സമർപ്പിക്കുക</string>
     <string name="call">വിളിക്കാം</string>
+    <string name="viewonmap">മാപ്പിൽ സ്ഥലം കാണാം</string>
     <string name="hint_campname">ക്യാമ്പിന്റെ പേര്</string>
     <string name="hint_needs">ആവശ്യങ്ങൾ അറിയിക്കുക</string>
-
+    <string name="needs">ആവശ്യമുള്ളത്</string>
+    <string name="campneeds">ക്യാമ്പുകളുടെ അവശ്യങ്ങൾ കാണുക</string>
+    <string name="information">നിങ്ങൾ അറിയേണ്ട കാര്യങ്ങൾ</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -1,6 +1,8 @@
 package com.mobioetech.keralathodoppam.keralathodoppam;
 
-public class ServiceRequest {
+import java.io.Serializable;
+
+public class ServiceRequest implements Serializable{
     private String name;
     private double currentlatitude;
     private double currentlongitude;

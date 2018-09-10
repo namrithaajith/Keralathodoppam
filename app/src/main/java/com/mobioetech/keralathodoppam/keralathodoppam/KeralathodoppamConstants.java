@@ -12,5 +12,7 @@ public class KeralathodoppamConstants {
     public static final String CAMPS = "camps";
     public static final String DISTRICTS = "districts";
     public static final String SEVANAMREQUIREMENTS = "sevanamrequirements";
-
+    public static final String ARIYIPPUKAL = "ariyippukal";
+    public static final String SLIDINGIMAGES = "slidingimages";
+    public static final String INFORMATION = "information";
 }

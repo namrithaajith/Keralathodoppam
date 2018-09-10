@@ -5,7 +5,11 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -42,7 +46,23 @@
         <activity android:name=".WhoRequireSevanam" />
         <activity android:name=".AskForSevanamDetail" />
         <activity android:name=".PinMyLocationMapActivity" />
-        <activity android:name=".ViewWhoRequireSevanam"></activity>
+        <activity android:name=".ViewWhoRequireSevanam" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.mobioetech.keralathodoppam.keralathodoppam"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".WhoRequireServiceMapActivity" />
+        <activity android:name=".ViewCampRequirements" />
+        <activity android:name=".ViewCampRequirementsSelectDistrict" />
+        <activity android:name=".CampRequirementZoomActivity" />
+        <activity android:name=".AriyipukalSlidingImageZoomActivity"></activity>
     </application>
 
 </manifest>

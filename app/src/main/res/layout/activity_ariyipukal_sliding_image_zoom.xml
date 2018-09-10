@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,17 +20,22 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:scrollbarStyle="outsideOverlay"
-        android:paddingStart="@dimen/margin_4"
-        android:paddingEnd="@dimen/margin_4"
-        android:paddingLeft="@dimen/margin_4"
-        android:paddingRight="@dimen/margin_4"
-        android:paddingBottom="@dimen/margin_16"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        android:id="@+id/container"
+        >
+
+        <ImageView
+
+            android:id="@+id/expanded_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,20 +1,71 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AriyippukalFragment">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:scrollbarStyle="outsideOverlay"
-        android:paddingStart="@dimen/margin_4"
-        android:paddingEnd="@dimen/margin_4"
-        android:paddingLeft="@dimen/margin_4"
-        android:paddingRight="@dimen/margin_4"
-        android:paddingBottom="@dimen/margin_16" />
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_image_height"
+            android:id="@+id/cvariyipukal"
+            android:layout_marginLeft="@dimen/margin_4"
+            android:layout_marginStart="@dimen/margin_4"
+            android:layout_marginRight="@dimen/margin_4"
+            android:layout_marginEnd="@dimen/margin_4"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginBottom="@dimen/margin_4"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?selectableItemBackground"
+            app:cardElevation="@dimen/cardview_default_elevation">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true" />
+
+                <com.mobioetech.keralathodoppam.keralathodoppam.CirclePageIndicator
+                    android:id="@+id/indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="bottom"
+                    android:padding="@dimen/margin_10"
+                    app:centered="true"
+                    app:fillColor="#ff0099"
+                    app:pageColor="#FF0000"
+                    app:snap="false" />
+
+            </RelativeLayout>
 
 
-</FrameLayout>
+        </android.support.v7.widget.CardView>
+        <TextView
+            android:id="@+id/txtinformation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/information"
+            android:gravity="center"
+            android:layout_below="@+id/cvariyipukal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_8"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/margin_8"
+            android:scrollbars="vertical"
+            android:layout_below="@id/txtinformation"
+            />
+
+    </RelativeLayout>
+
+

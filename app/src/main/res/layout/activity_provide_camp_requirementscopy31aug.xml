@@ -126,18 +126,30 @@
                     android:textColor="@color/text_color"
                     android:textColorHint="@color/grey"
                     android:textSize="@dimen/subHeader_sp_16" />
-
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:id="@+id/bt_selectpic"
+                    android:layout_width="@dimen/margin_48"
+                    android:layout_height="@dimen/margin_48"
+                    android:layout_marginBottom="@dimen/button_marginBottom"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/selectfromgallery"
+                    android:layout_weight="1"
+                    />
                 <ImageView
                     android:id="@+id/bt_takephoto"
                     android:layout_width="@dimen/margin_48"
-                    android:gravity="center"
+                    android:layout_weight="1"
                     android:layout_height="@dimen/margin_48"
                     android:layout_marginBottom="@dimen/button_marginBottom"
                     android:src="@drawable/takephoto"
                     android:layout_gravity="center_horizontal"
                     />
-
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/imgView"

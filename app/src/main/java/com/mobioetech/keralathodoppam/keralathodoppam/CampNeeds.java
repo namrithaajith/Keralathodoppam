@@ -1,12 +1,24 @@
 package com.mobioetech.keralathodoppam.keralathodoppam;
 
-public class CampNeeds {
+import java.io.Serializable;
+
+public class CampNeeds implements Serializable {
     private String campname;
     private double latitudeofpersonregistered;
     private double longitudeofpersonregister;
     private String locality;
     private String district;
     private String needs;
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    private String imagePath;
 
     public String getNeeds_url() {
         return needs_url;

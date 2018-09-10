@@ -1,21 +1,24 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
+    tools:showIn="@layout/activity_view_camp_requirements_select_district">
     <android.support.v7.widget.RecyclerView
+        android:background="@color/lightskyblue"
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:scrollbarStyle="outsideOverlay"
         android:paddingStart="@dimen/margin_4"
-        android:paddingEnd="@dimen/margin_4"
         android:paddingLeft="@dimen/margin_4"
         android:paddingRight="@dimen/margin_4"
-        android:paddingBottom="@dimen/margin_16" />
+        android:paddingEnd="@dimen/margin_4"
+        android:paddingBottom="@dimen/margin_16"
+        />
 
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
