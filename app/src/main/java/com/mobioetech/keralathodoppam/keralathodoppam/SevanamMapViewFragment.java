@@ -40,6 +40,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -57,10 +58,10 @@ import butterknife.ButterKnife;
 import static android.R.attr.key;
 
 public class SevanamMapViewFragment extends Fragment implements GeoQueryEventListener, OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
-    private static final String LOG = "savanamMapview";
+    private static final String LOG = "sevanamMapview";
     private static final int INITIAL_ZOOM_LEVEL = 14;
     private FirebaseDatabase database = null;
-    private DatabaseReference geofireref, ref_service;
+    private DatabaseReference geofireref, ref_service,ref_identifyphonecall;
     private GoogleMap map;
     private GeoFire geoFire;
     private GeoQuery geoQuery;
@@ -331,6 +332,16 @@ public class SevanamMapViewFragment extends Fragment implements GeoQueryEventLis
                     btn_call.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            Long tsLong = System.currentTimeMillis()/1000;
+                            String ts = tsLong.toString();
+
+                            ref_identifyphonecall = KeralathodoppamDBUtil.getInstance().getReference().child(KeralathodoppamConstants.KERALA).child(KeralathodoppamConstants.IDENTIFYPHONECALLS).child(KeralathodoppamConstants.SEVANAM).push();
+                            IdentifyPhoneCall phonecall = new IdentifyPhoneCall();
+                            phonecall.setCallfrom(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                            phonecall.setCallto(phone[0]);
+                            phonecall.setTimestamp(ts);
+                            ref_identifyphonecall.setValue(phonecall);
+
                             if(phone[0] != null)
                             {
                                 Intent callIntent = new Intent(Intent.ACTION_CALL);

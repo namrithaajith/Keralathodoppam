@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,9 @@ public class SlidingImage_Adapter extends PagerAdapter {
 
     @Override
     public int getCount() {
+        Log.i(LOG,"IMAGES.size()---------->"+IMAGES.size());
         return IMAGES.size();
+
     }
 
     @Override

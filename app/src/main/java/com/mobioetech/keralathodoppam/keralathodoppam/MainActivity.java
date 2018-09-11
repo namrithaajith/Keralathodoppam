@@ -125,9 +125,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new SevanamFragment(), getResources().getString(R.string.sevanam));
-        adapter.addFragment(new CampsFragment(), getResources().getString(R.string.camps));
         adapter.addFragment(new AriyippukalFragment(), getResources().getString(R.string.ariyippukal));
+        adapter.addFragment(new SevanamFragment(), getResources().getString(R.string.sevanam));
+        adapter.addFragment(new DonateFragment(), getResources().getString(R.string.donate));
+        adapter.addFragment(new CampsFragment(), getResources().getString(R.string.camps));
         viewPager.setAdapter(adapter);
     }
 

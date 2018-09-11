@@ -62,7 +62,20 @@
         <activity android:name=".ViewCampRequirements" />
         <activity android:name=".ViewCampRequirementsSelectDistrict" />
         <activity android:name=".CampRequirementZoomActivity" />
-        <activity android:name=".AriyipukalSlidingImageZoomActivity"></activity>
+        <activity android:name=".AriyipukalSlidingImageZoomActivity" />
+
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
     </application>
 
 </manifest>

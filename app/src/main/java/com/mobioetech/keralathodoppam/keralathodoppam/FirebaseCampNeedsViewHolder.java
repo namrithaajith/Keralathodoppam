@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -27,6 +29,7 @@ public class FirebaseCampNeedsViewHolder extends RecyclerView.ViewHolder{
     View mView;
     Context mContext;
     String imagePath;
+    private DatabaseReference ref_identifyphonecall;
 
     public FirebaseCampNeedsViewHolder(View itemView) {
         super(itemView);
@@ -114,6 +117,17 @@ public class FirebaseCampNeedsViewHolder extends RecyclerView.ViewHolder{
             @Override
             public void onClick(View v) {
                 String phone_no = campNeeds.getPhonenumber();
+
+                Long tsLong = System.currentTimeMillis()/1000;
+                String ts = tsLong.toString();
+
+                ref_identifyphonecall = KeralathodoppamDBUtil.getInstance().getReference().child(KeralathodoppamConstants.KERALA).child(KeralathodoppamConstants.IDENTIFYPHONECALLS).child(KeralathodoppamConstants.CAMPS).push();
+                IdentifyPhoneCall phonecall = new IdentifyPhoneCall();
+                phonecall.setCallfrom(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                phonecall.setCallto(phone_no);
+                phonecall.setTimestamp(ts);
+                ref_identifyphonecall.setValue(phonecall);
+
                 if(phone_no != null)
                 {
                     Intent callIntent = new Intent(Intent.ACTION_CALL);

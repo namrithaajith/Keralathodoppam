@@ -8,7 +8,6 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,22 +67,17 @@ public class AriyippukalFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        Log.i(LOG,"adapter--------------->"+adapter);
-        Log.i(LOG,"onStart called ariyipukal fragment");
         adapter.startListening();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Log.i(LOG,"onStop called ariyipukal fragment");
         adapter.stopListening();
     }
 
     private void setUpInformationRecyclerView() {
         ref_information = KeralathodoppamDBUtil.getInstance().getReference().child(KeralathodoppamConstants.KERALA).child(KeralathodoppamConstants.ARIYIPPUKAL).child(KeralathodoppamConstants.INFORMATION);
-        Log.i(LOG,"ref_information---adapter--->"+ref_information);
-
         FirebaseRecyclerOptions<Ariyippukal> options =
                 new FirebaseRecyclerOptions.Builder<Ariyippukal>()
                         .setQuery(ref_information,Ariyippukal.class)
@@ -97,14 +91,12 @@ public class AriyippukalFragment extends Fragment {
             public FirebaseAriyippukalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.activity_view_ariyippukal_listitem, parent, false);
-                Log.i(LOG,"onCreateViewHolder---FirebaseAriyippukalViewHolder---->");
                 return new FirebaseAriyippukalViewHolder(view);
             }
 
             @Override
             protected void onBindViewHolder(@NonNull FirebaseAriyippukalViewHolder holder, int position, @NonNull Ariyippukal model) {
                 holder.bindAriyippukal(model);
-                Log.i(LOG,"onBindViewHolder---FirebaseAriyippukalViewHolder---->");
             }
         };
 
@@ -117,10 +109,10 @@ public class AriyippukalFragment extends Fragment {
     private void initViewPager() {
 
         ref_slidingimages = KeralathodoppamDBUtil.getInstance().getReference(KeralathodoppamConstants.KERALA).child(KeralathodoppamConstants.ARIYIPPUKAL).child(KeralathodoppamConstants.SLIDINGIMAGES);
-        Log.i(LOG,"ref_slidingimages----->"+ ref_slidingimages);
-        ref_slidingimages.addListenerForSingleValueEvent(new ValueEventListener() {
+        ref_slidingimages.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                ImagesArray = new ArrayList<>(0);
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
                     String imageurl = snapshot.getValue(AriyipukalSlidingImages.class).getImage_url();

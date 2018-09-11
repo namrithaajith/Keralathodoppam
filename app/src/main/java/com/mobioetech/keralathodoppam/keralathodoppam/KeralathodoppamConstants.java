@@ -15,4 +15,6 @@ public class KeralathodoppamConstants {
     public static final String ARIYIPPUKAL = "ariyippukal";
     public static final String SLIDINGIMAGES = "slidingimages";
     public static final String INFORMATION = "information";
+    public static final String IDENTIFYPHONECALLS = "identifyphonecalls";
 }
+

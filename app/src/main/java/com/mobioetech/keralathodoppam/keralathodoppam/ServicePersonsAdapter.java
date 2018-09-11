@@ -18,6 +18,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.ArrayList;
 
 public class ServicePersonsAdapter extends RecyclerView.Adapter<ServicePersonsAdapter.ViewHolder> {
@@ -25,6 +28,7 @@ public class ServicePersonsAdapter extends RecyclerView.Adapter<ServicePersonsAd
     private ArrayList<Person> person_al;
     private Context context;
     private static final String LOG = "sevanamAdapter";
+    private DatabaseReference ref_identifyphonecall;
     public ServicePersonsAdapter(Context context, ArrayList<Person> person) {
 
         this.context = context;
@@ -65,6 +69,17 @@ public class ServicePersonsAdapter extends RecyclerView.Adapter<ServicePersonsAd
             holder.btn_call.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    Long tsLong = System.currentTimeMillis()/1000;
+                    String ts = tsLong.toString();
+
+                    ref_identifyphonecall = KeralathodoppamDBUtil.getInstance().getReference().child(KeralathodoppamConstants.KERALA).child(KeralathodoppamConstants.IDENTIFYPHONECALLS).child(KeralathodoppamConstants.SEVANAM).push();
+                    IdentifyPhoneCall phonecall = new IdentifyPhoneCall();
+                    phonecall.setCallfrom(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                    phonecall.setCallto(person_al.get(position).getPhonenumber());
+                    phonecall.setTimestamp(ts);
+                    ref_identifyphonecall.setValue(phonecall);
+
                     Intent callIntent = new Intent(Intent.ACTION_CALL);
                     callIntent.setData(Uri.parse("tel:"+person_al.get(position).getPhonenumber()));
                     Log.i(LOG,"Phone number------>"+person_al.get(position).getPhonenumber());

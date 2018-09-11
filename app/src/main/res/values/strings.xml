@@ -25,23 +25,27 @@
 
     <string name="sevanam">സേവനം</string>
     <string name="camps">ക്യാമ്പുകൾ</string>
-    <string name="ariyippukal">അറിഞ്ഞിരിക്കുക</string>
+    <string name="ariyippukal">അറിയാൻ</string>
+    <string name="donate">സംഭാവന</string>
+    <string name="donatetocmsreliffund">മുഖ്യമന്ത്രിയുടെ ദുരിതാശ്വാസ നിധിയിലേക്ക് സംഭാവന നൽകുക</string>
     <string name="availableservices">ലഭ്യമായ സേവനങ്ങൾ</string>
     <string name="map">ഭൂപടം</string>
 
     <string-array name="sevanam_types">
-        <item>സേവനം നൽകൂ</item>
-        <item>സേവനം ലഭ്യമാക്കുക</item>
-        <item>സേവനത്തിന് ആവശ്യപ്പെടാം</item>
-        <item>സേവനം ആവശ്യമുള്ളവർ</item>
+        <item>നിങ്ങൾ സേവനം ചെയ്യാൻ ആഗ്രഹിക്കുന്നെങ്കിൽ ഇവിടെ രജിസ്റ്റർ ചെയ്യുക</item>
+        <item>സേവനം നൽകുന്ന ആളുകളുടെ വിശദാംശങ്ങൾ അറിയാൻ ഇവിടെ ക്ലിക്ക് ചെയ്യുക</item>
+        <item>നിങ്ങൾക്ക് സേവനം ആവശ്യമുണ്ടെങ്കിൽ ഇവിടെ രജിസ്റ്റർ ചെയ്യുക</item>
+        <item>സേവനം ലഭ്യമാക്കുവാൻ രജിസ്റ്റർ ചെയ്ത ആളുകളുടെ വിശദാംശങ്ങൾ നേടുക</item>
     </string-array>
+
     <string-array name="sevanam_types_imageUrls">
         <item>givesevanam</item>
         <item>sevanamkittuka1</item>
         <item>tellrequirements</item>
         <item>whorequireservice1</item>
     </string-array>
-
+    <string name="givesevanam">നിങ്ങൾ സേവനം ചെയ്യാൻ ആഗ്രഹിക്കുന്നെങ്കിൽ രജിസ്റ്റർ ചെയ്യുക</string>
+    <string name="getsevanam">നിങ്ങൾക്ക് സേവനം ആവശ്യമുണ്ടെങ്കിൽ രജിസ്റ്റർ ചെയ്യുക</string>
     <string-array name="camprequirementtype">
         <item>ക്യാമ്പുകളുടെ അവശ്യങ്ങൾ കാണുക</item>
         <item>ക്യാമ്പുകളുടെ അവശ്യങ്ങൾ അറിയിക്കുക</item>

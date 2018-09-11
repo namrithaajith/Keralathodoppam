@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,7 +32,6 @@ public class FirebaseAriyippukalViewHolder extends RecyclerView.ViewHolder{
         ImageView thumbnail = (ImageView) mView.findViewById(R.id.thumbnail);
 
         String youtube_thumbnail = ariyippukal.getVideo_id();
-        Log.i(LOG,"youtube_thumbnail---------->"+youtube_thumbnail);
         if(youtube_thumbnail != null) {
             Picasso.get()
                     .load(youtube_thumbnail)
