@@ -14,11 +14,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+
 
 public class FirebaseServiceRequestViewHolder extends RecyclerView.ViewHolder{
     private static final String LOG = "viewholderlog";
     View mView;
     Context mContext;
+    private DatabaseReference ref_identifyphonecall;
 
     public FirebaseServiceRequestViewHolder(View itemView) {
         super(itemView);
@@ -55,6 +59,16 @@ public class FirebaseServiceRequestViewHolder extends RecyclerView.ViewHolder{
             @Override
             public void onClick(View v) {
                 String phone_no = serviceRequest.getPhonenumber();
+                Long tsLong = System.currentTimeMillis()/1000;
+                String ts = tsLong.toString();
+
+                ref_identifyphonecall = KeralathodoppamDBUtil.getInstance().getReference().child(KeralathodoppamConstants.KERALA).child(KeralathodoppamConstants.IDENTIFYPHONECALLS).child(KeralathodoppamConstants.WHOREQUIRESEVANAM).push();
+                IdentifyPhoneCall phonecall = new IdentifyPhoneCall();
+                phonecall.setCallfrom(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                phonecall.setCallto(phone_no);
+                phonecall.setTimestamp(ts);
+                ref_identifyphonecall.setValue(phonecall);
+
                 if(phone_no != null)
                 {
                     Intent callIntent = new Intent(Intent.ACTION_CALL);

@@ -1,9 +1,30 @@
 package com.mobioetech.keralathodoppam.keralathodoppam;
 
-public class Ariyippukal{
+import java.io.Serializable;
+
+public class Ariyippukal implements Serializable{
     private String heading;
-    private String video_id;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    private String image;
     private String youtubeLink;
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    private String details;
 
     public Ariyippukal() {
     }
@@ -14,14 +35,6 @@ public class Ariyippukal{
 
     public void setHeading(String heading) {
         this.heading = heading;
-    }
-
-    public String getVideo_id() {
-        return video_id;
-    }
-
-    public void setVideo_id(String video_id) {
-        this.video_id = video_id;
     }
 
     public String getYoutubeLink() {

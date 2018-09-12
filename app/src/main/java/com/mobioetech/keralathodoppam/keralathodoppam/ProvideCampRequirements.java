@@ -157,7 +157,7 @@ public class ProvideCampRequirements extends AppCompatActivity {
                                 campNeeds.setCampname(mEtNameView.getText().toString());
                                 campNeeds.setPhonenumber(mEtPhoneView.getText().toString());
                                 campNeeds.setTimestamp(ts);
-                                campNeeds.setImagePath(mCurrentPhotoPath);
+                                campNeeds.setImagePath(filePath.toString());
                                 ref_campneeds.setValue(campNeeds);
 
                                 Intent intent = new Intent(ProvideCampRequirements.this,SubmissionSuccessfulActivity.class);
@@ -262,7 +262,10 @@ public class ProvideCampRequirements extends AppCompatActivity {
 
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
-        Log.i(LOG,"mCurrentPhotoPath-------->"+mCurrentPhotoPath);
+        ExifInterface exif = new ExifInterface(mCurrentPhotoPath);
+        exif.getAttribute(ExifInterface.TAG_ORIENTATION);
+
+        Log.i(LOG,"mCurrentPhotoPath----exif.getAttribute(ExifInterface.TAG_ORIENTATION)---->"+mCurrentPhotoPath+","+exif.getAttribute(ExifInterface.TAG_ORIENTATION));
         return image;
     }
 
@@ -313,10 +316,11 @@ public class ProvideCampRequirements extends AppCompatActivity {
             }
 
     private void setPic() throws IOException {
+
         // Get the dimensions of the View
         int targetW = imgselected.getWidth();
         int targetH = imgselected.getHeight();
-
+        Log.i(LOG,"mCurrentPhotoPath-- in provide camp requirements---->"+mCurrentPhotoPath+","+targetW);
         // Get the dimensions of the bitmap
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
         bmOptions.inJustDecodeBounds = true;

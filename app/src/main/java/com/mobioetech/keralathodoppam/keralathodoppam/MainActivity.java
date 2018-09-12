@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.MainThread;
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new AriyippukalFragment(), getResources().getString(R.string.ariyippukal));
         adapter.addFragment(new SevanamFragment(), getResources().getString(R.string.sevanam));
-        adapter.addFragment(new DonateFragment(), getResources().getString(R.string.donate));
+        //adapter.addFragment(new DonateFragment(), getResources().getString(R.string.donate));
         adapter.addFragment(new CampsFragment(), getResources().getString(R.string.camps));
         viewPager.setAdapter(adapter);
     }
@@ -160,6 +161,11 @@ public class MainActivity extends AppCompatActivity {
                                         });
 
 
+                                break;
+
+                            case R.id.nav_donate:
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://donation.cmdrf.kerala.gov.in/#donation"));
+                                startActivity(browserIntent);
                                 break;
                             case R.id.nav_delete:
                                 if (auth.getCurrentUser() != null){

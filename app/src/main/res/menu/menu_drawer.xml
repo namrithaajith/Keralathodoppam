@@ -14,6 +14,16 @@
         android:id="@+id/group2"
         android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_donate"
+            android:checked="true"
+
+            android:title="@string/donate"/>
+
+    </group>
+    <group
+        android:id="@+id/group3"
+        android:checkableBehavior="single">
+        <item
             android:id="@+id/nav_logout"
             android:checked="true"
 

@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,8 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -64,7 +65,6 @@ public class ViewCampRequirements extends AppCompatActivity {
 
     private void setupFirebaseadapter(){
         ref_camprequirements = database.getReference().child(KeralathodoppamConstants.KERALA).child(KeralathodoppamConstants.CAMPS).child(selectedDistrict);
-        Log.i(LOG,"ref_camprequirements------>"+ref_camprequirements);
         FirebaseRecyclerOptions<CampNeeds> options =
                 new FirebaseRecyclerOptions.Builder<CampNeeds>()
                         .setQuery(ref_camprequirements,CampNeeds.class)
@@ -77,14 +77,16 @@ public class ViewCampRequirements extends AppCompatActivity {
             public FirebaseCampNeedsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.activity_view_camp_requirements_listitem, parent, false);
-                Log.i(LOG,"onCreateViewHolder------->");
                 return new FirebaseCampNeedsViewHolder(view);
             }
 
             @Override
             protected void onBindViewHolder(@NonNull FirebaseCampNeedsViewHolder holder, int position, @NonNull CampNeeds model) {
-                holder.bindCampNeeds(model);
-                Log.i(LOG,"onBindViewHolder------->");
+                try {
+                    holder.bindCampNeeds(model);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         };
         rcv.setHasFixedSize(true);

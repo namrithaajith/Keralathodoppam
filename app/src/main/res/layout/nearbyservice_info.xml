@@ -50,21 +50,21 @@
                 android:id="@+id/personphone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/subHeader_sp_16"
+                android:textSize="@dimen/normalText_sp_14"
                 android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/servicetype"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/subHeader_sp_16"
+                android:textSize="@dimen/normalText_sp_14"
                 android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/place"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/subHeader_sp_16"
+                android:textSize="@dimen/normalText_sp_14"
                 android:textStyle="bold"
                 android:paddingBottom="@dimen/margin_8"/>
 

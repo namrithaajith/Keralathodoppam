@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -28,18 +27,19 @@ public class FirebaseCampNeedsViewHolder extends RecyclerView.ViewHolder{
     private static final String LOG = "viewholderlog";
     View mView;
     Context mContext;
-    String imagePath;
-    private DatabaseReference ref_identifyphonecall;
+    private DatabaseReference ref_identifyphonecall,ref_identifyshare;
+
 
     public FirebaseCampNeedsViewHolder(View itemView) {
         super(itemView);
         mView = itemView;
+
         mContext = itemView.getContext();
 
     }
 
 
-    public void bindCampNeeds(final CampNeeds campNeeds) {
+    public void bindCampNeeds(final CampNeeds campNeeds) throws IOException {
 
         TextView name = (TextView) mView.findViewById(R.id.campname);
         name.setText(campNeeds.getCampname());
@@ -62,45 +62,61 @@ public class FirebaseCampNeedsViewHolder extends RecyclerView.ViewHolder{
 
         needs.setText(mContext.getResources().getString(R.string.needs)+":\n"+campNeeds.getNeeds());
 
-        ImageView needsImage = (ImageView) mView.findViewById(R.id.imv_needs);
+        ImageView needsImage= (ImageView) mView.findViewById(R.id.imv_needs);
 
-        Log.i(LOG,"campNeeds.getNeeds_url()=-------->"+campNeeds.getNeeds_url());
-
-        imagePath = campNeeds.getImagePath();
 
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         cal.setTimeInMillis(Long.parseLong(campNeeds.getTimestamp()) * 1000L);
         final String date = DateFormat.format("dd-MM-yyyy hh:mm:ss", cal).toString();
 
         ImageView imvShare = (ImageView) mView.findViewById(R.id.imv_share);
+//        imvShare.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if(filePath != null){
+//                    shareImage();
+//                }
+//                else {
+//                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+//                    sharingIntent.setType("text/plain");
+//                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, campNeeds.getCampname());
+//                    String share_text = campNeeds.getCampname()+"\n"+date +"\n"+mContext.getResources().getString(R.string.needs)+" \n "+campNeeds.getNeeds();
+//
+//                    sharingIntent.putExtra(Intent.EXTRA_TEXT, share_text);
+//                    mContext.startActivity(Intent.createChooser(sharingIntent, mContext.getResources().getString(R.string.share_chooser)));
+//
+//                }
+//
+//
+//            }
+//        });
         imvShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i(LOG,"imagePath-----campNeeds.getNeeds()----"+imagePath+","+campNeeds.getNeeds());
-                if(imagePath != null){
-                    shareImage();
-                }
-                else {
-                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-                    sharingIntent.setType("text/plain");
-                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, campNeeds.getCampname());
-                    String share_text = campNeeds.getCampname()+"\n"+date +"\n"+mContext.getResources().getString(R.string.needs)+" \n "+campNeeds.getNeeds();
 
-                    sharingIntent.putExtra(Intent.EXTRA_TEXT, share_text);
-                    mContext.startActivity(Intent.createChooser(sharingIntent, mContext.getResources().getString(R.string.share_chooser)));
+                ref_identifyshare = KeralathodoppamDBUtil.getInstance().getReference().child(KeralathodoppamConstants.KERALA).child(KeralathodoppamConstants.IDENTIFYSHARE).child(KeralathodoppamConstants.CAMPS).push();
+                IdentifyShare identifyShare = new IdentifyShare();
+                identifyShare.setSharedby(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                ref_identifyshare.setValue(identifyShare);
 
-                }
-
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, campNeeds.getCampname());
+                String share_text = mContext.getResources().getString(R.string.campneeds)+"\n"+campNeeds.getCampname()+"\n"+date +"\n"+mContext.getResources().getString(R.string.needs)+" \n "+campNeeds.getNeeds();
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, share_text);
+                mContext.startActivity(Intent.createChooser(sharingIntent, mContext.getResources().getString(R.string.share_chooser)));
 
             }
         });
-        if(campNeeds.getNeeds_url() != null){
 
-            Picasso.get()
-                    .load(campNeeds.getNeeds_url())
-                    .resize(600, 600)
-                    .centerCrop()
-                    .into(needsImage);
+        if(campNeeds.getNeeds_url() != null){
+             Picasso.get()
+                            .load(campNeeds.getNeeds_url())
+                            .resize(1000, 800)
+                            .centerCrop()
+                            .into(needsImage);
+
 
             needsImage.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -111,6 +127,8 @@ public class FirebaseCampNeedsViewHolder extends RecyclerView.ViewHolder{
                 }
             });
         }
+
+
 
 
         phone_numbercall.setOnClickListener(new View.OnClickListener() {
@@ -166,28 +184,5 @@ public class FirebaseCampNeedsViewHolder extends RecyclerView.ViewHolder{
 
 
         }
-
-    private void shareImage() {
-        Intent share = new Intent(Intent.ACTION_SEND);
-
-        // If you want to share a png image only, you can do:
-        // setType("image/png"); OR for jpeg: setType("image/jpeg");
-        share.setType("image/*");
-
-        // Make sure you put example png image named myImage.png in your
-        // directory
-//        String imagePath = Environment.getExternalStorageDirectory()
-//                + "/myImage.png";
-
-        File imageFileToShare = new File(imagePath);
-
-        Uri uri = Uri.fromFile(imageFileToShare);
-        share.putExtra(Intent.EXTRA_STREAM, uri);
-
-        mContext.startActivity(Intent.createChooser(share, "Share Image!"));
-    }
-
-
-
 
 }

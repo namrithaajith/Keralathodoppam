@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">കേരളത്തോടൊപ്പം</string>
+    <string name="app_name">Keralathodoppam</string>
+    <string name="app_name_malayalam">കേരളത്തോടൊപ്പം</string>
 
     <string name="unknown_sign_in_response">Unknown response from AuthUI sign-in</string>
     <string name="unknown_response">Unexpected onActivityResult response code</string>
@@ -19,14 +20,15 @@
 
     <string name="login">Login</string>
     <string name="login_header">നമുക്ക് കൈകോർക്കാം</string>
+    <string name="submission_successful">നിങ്ങളുടെ വിവരങ്ങൾ വിജയകരമായി സമർപ്പിച്ചു</string>
     <string name="menu_home">ഹോം</string>
     <string name="menu_logout">ലോഗൗട്ട് </string>
     <string name="menu_delete_account">അക്കൗണ്ട് ഇല്ലാതാക്കുക</string>
 
     <string name="sevanam">സേവനം</string>
-    <string name="camps">ക്യാമ്പുകൾ</string>
+    <string name="camps">ക്യാമ്പ്</string>
     <string name="ariyippukal">അറിയാൻ</string>
-    <string name="donate">സംഭാവന</string>
+    <string name="donate">സംഭാവന ചെയ്യുക</string>
     <string name="donatetocmsreliffund">മുഖ്യമന്ത്രിയുടെ ദുരിതാശ്വാസ നിധിയിലേക്ക് സംഭാവന നൽകുക</string>
     <string name="availableservices">ലഭ്യമായ സേവനങ്ങൾ</string>
     <string name="map">ഭൂപടം</string>

@@ -29,23 +29,33 @@ public class FirebaseAriyippukalViewHolder extends RecyclerView.ViewHolder{
         TextView name = (TextView) mView.findViewById(R.id.tv_heading);
         name.setText(ariyippukal.getHeading());
 
-        ImageView thumbnail = (ImageView) mView.findViewById(R.id.thumbnail);
+        ImageView iv_thumbnail = (ImageView) mView.findViewById(R.id.thumbnail);
 
-        String youtube_thumbnail = ariyippukal.getVideo_id();
-        if(youtube_thumbnail != null) {
+        String thumbnail = ariyippukal.getImage();
+
+        if(thumbnail != null) {
             Picasso.get()
-                    .load(youtube_thumbnail)
-
-                    .into(thumbnail);
+                    .load(thumbnail)
+                    .into(iv_thumbnail);
         }
 
         mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = ariyippukal.getYoutubeLink();
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                mContext.startActivity(i);
+                if(ariyippukal.getDetails() == null){
+                    if(ariyippukal.getYoutubeLink() != null){
+                        String url = ariyippukal.getYoutubeLink();
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse(url));
+                        mContext.startActivity(i);
+                    }
+                    }
+                    else{
+                    Intent intent = new Intent(mContext,AriyipukalDetailActivity.class);
+                    intent.putExtra("ariyippukal",ariyippukal);
+                    mContext.startActivity(intent);
+                }
+
             }
         });
 
