@@ -20,7 +20,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_heading"
-            android:textSize="@dimen/normalText_sp_14"/>
+            android:textSize="@dimen/normalText_sp_14"
+            android:layout_marginBottom="@dimen/margin_8"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/support_image"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tv_details"/>
 
     </RelativeLayout>
 

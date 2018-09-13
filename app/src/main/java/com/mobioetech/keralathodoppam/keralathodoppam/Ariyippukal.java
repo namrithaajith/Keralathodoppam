@@ -16,6 +16,16 @@ public class Ariyippukal implements Serializable{
     private String image;
     private String youtubeLink;
 
+    public String getSupport_image() {
+        return support_image;
+    }
+
+    public void setSupport_image(String support_image) {
+        this.support_image = support_image;
+    }
+
+    private String support_image;
+
     public String getDetails() {
         return details;
     }

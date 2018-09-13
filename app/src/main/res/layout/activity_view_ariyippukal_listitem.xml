@@ -20,7 +20,7 @@
             android:id="@+id/thumbnail"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="@dimen/margin_20"/>
 
         <TextView
             android:layout_marginTop="10dp"
