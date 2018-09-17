@@ -2,7 +2,6 @@ package com.mobioetech.keralathodoppam.keralathodoppam;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,17 +10,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by ajithkp on 19/06/17.
- */
-
 public class DistrictsAdapter extends RecyclerView.Adapter<DistrictsAdapter.ViewHolder> {
 
     private ArrayList<String> districts;
     private Context context;
     private static final String LOG = "locationsAdapter";
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    SharedPreferences sharedpreferences;
     String selecteddistrict;
 
 
@@ -43,7 +36,6 @@ public class DistrictsAdapter extends RecyclerView.Adapter<DistrictsAdapter.View
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
         holder.locationName.setText(districts.get(position));
-        sharedpreferences = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         holder.mView.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -52,6 +44,7 @@ public class DistrictsAdapter extends RecyclerView.Adapter<DistrictsAdapter.View
                 selecteddistrict = districts.get(position);
                 intent = new Intent(context,ViewCampRequirements.class);
                 intent.putExtra("selecteddistrict",selecteddistrict);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
 
             }

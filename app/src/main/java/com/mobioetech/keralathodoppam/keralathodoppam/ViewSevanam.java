@@ -6,7 +6,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoQuery;
@@ -47,7 +46,6 @@ public class ViewSevanam extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         database = KeralathodoppamDBUtil.getInstance();
         serviceType = getIntent().getStringExtra("sevanamType");
-        Log.i(LOG,"serviceType------->"+serviceType);
         switch(serviceType){
             case "Cleaning":sevanam = getResources().getString(R.string.cleaning);
                 break;

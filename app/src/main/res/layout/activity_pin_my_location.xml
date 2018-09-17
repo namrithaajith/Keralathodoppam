@@ -16,6 +16,5 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/margin_8"
     android:background="@color/sea_green_color"
-    android:text="Where to?"
     android:textColor="@color/text_color"/>
 </FrameLayout>

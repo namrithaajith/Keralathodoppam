@@ -37,6 +37,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -94,12 +95,9 @@ public class SevanamMapViewFragment extends Fragment implements GeoQueryEventLis
 
         View view = inflater.inflate(R.layout.fragment_sevanammapview, container, false);
 
-        Log.i(LOG,"serviceType------>"+SevanamFragment.serviceType);
-
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
 
         mapFragment.getMapAsync(this);
-        Log.i(LOG,"mapFragment------>"+mapFragment);
         ButterKnife.bind(this, view);
         mapFragment.getMapAsync((OnMapReadyCallback) this);
 
@@ -129,7 +127,6 @@ public class SevanamMapViewFragment extends Fragment implements GeoQueryEventLis
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        Log.i(LOG,"inside on map ready");
         map = googleMap;
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -153,13 +150,11 @@ public class SevanamMapViewFragment extends Fragment implements GeoQueryEventLis
 
         if(SevanamFragment.mLastLocation != null)
         {
-            Log.i(LOG,"SevanamFragment.mLastLocation------>"+SevanamFragment.mLastLocation);
             GeoLocation INITIAL_CENTER = new GeoLocation(SevanamFragment.currentlatitude, SevanamFragment.currentlongitude);
 
             database = KeralathodoppamDBUtil.getInstance();
 
             geofireref = database.getReference(KeralathodoppamConstants.KERALA).child(KeralathodoppamConstants.SEVANAM).child(SevanamFragment.serviceType).child(KeralathodoppamConstants.GEOFIRE);
-            Log.i(LOG,"geofireref------>"+geofireref);
             this.geoFire = new GeoFire(geofireref);
 
             this.geoQuery = this.geoFire.queryAtLocation(INITIAL_CENTER, 30);//The radius has to be decreased
@@ -220,7 +215,7 @@ public class SevanamMapViewFragment extends Fragment implements GeoQueryEventLis
                 .build()), 10000, null);*/
 
         //final Marker marker = this.map.addMarker(new MarkerOptions().position(new LatLng(location.latitude, location.longitude)).icon(BitmapDescriptorFactory.fromResource(R.drawable.icondrive )));
-        final Marker marker = this.map.addMarker(new MarkerOptions().position(new LatLng(location.latitude, location.longitude)));
+        final Marker marker = this.map.addMarker(new MarkerOptions().position(new LatLng(location.latitude, location.longitude)).icon(BitmapDescriptorFactory.fromResource(R.drawable.pin)));
 
         marker.setTag(key);
 
@@ -243,8 +238,6 @@ public class SevanamMapViewFragment extends Fragment implements GeoQueryEventLis
     @Override
     public void onKeyMoved(String key, GeoLocation location) {
         Marker marker = this.markers.get(key);
-
-        Log.i(LOG,"On key moved called......");
 
         if (marker != null) {
             this.animateMarkerTo(marker, location.latitude, location.longitude);

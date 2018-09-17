@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -105,7 +104,6 @@ public class AskForSevanamDetail extends AppCompatActivity {
                 serviceRequest.setPinnedlongitude(PinMyLocationMapActivity.pinnedlongitude);
                 serviceRequest.setTimestamp(ts);
                 ref_requiresevanam.setValue(serviceRequest);
-                Log.i(LOG,"pinnedlatitude------"+PinMyLocationMapActivity.pinnedlatitude);
 
                 Intent intent = new Intent(AskForSevanamDetail.this,SubmissionSuccessfulActivity.class);
                 startActivity(intent);
@@ -116,7 +114,6 @@ public class AskForSevanamDetail extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.i(LOG,"On start called");
         if(PinMyLocationMapActivity.pinnedaddress != null){
             mEtaddress.setText(PinMyLocationMapActivity.pinnedaddress);
         }
@@ -124,7 +121,6 @@ public class AskForSevanamDetail extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        Log.i(LOG,"On resume called");
         super.onResume();
     }
 

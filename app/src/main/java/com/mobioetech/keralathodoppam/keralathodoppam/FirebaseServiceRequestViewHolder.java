@@ -50,7 +50,6 @@ public class FirebaseServiceRequestViewHolder extends RecyclerView.ViewHolder{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext,WhoRequireServiceMapActivity.class);
-                //intent.putExtra("phonenumber",serviceRequest.getPhonenumber());
                 intent.putExtra("serviceRequest", serviceRequest);
                 mContext.startActivity(intent);
             }

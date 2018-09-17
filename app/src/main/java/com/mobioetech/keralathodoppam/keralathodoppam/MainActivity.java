@@ -86,8 +86,6 @@ public class MainActivity extends AppCompatActivity {
             headerview = mNavigationView.getHeaderView(0);
             loginbtn = (TextView) headerview.findViewById(R.id.login_text);
             auth = FirebaseAuth.getInstance();
-
-            Log.i(LOG,"User logged in....--->"+auth.getCurrentUser().getPhoneNumber());
             loginbtn.setText(auth.getCurrentUser().getPhoneNumber());
 
         }
@@ -128,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new AriyippukalFragment(), getResources().getString(R.string.ariyippukal));
         adapter.addFragment(new SevanamFragment(), getResources().getString(R.string.sevanam));
-        //adapter.addFragment(new DonateFragment(), getResources().getString(R.string.donate));
         adapter.addFragment(new CampsFragment(), getResources().getString(R.string.camps));
         viewPager.setAdapter(adapter);
     }
@@ -196,15 +193,12 @@ public class MainActivity extends AppCompatActivity {
                 super.onDrawerOpened(drawerView);
 
                 System.out.println("Inside on drawer opened");
-                //getSupportActionBar().setTitle(getString(R.string.drawer_opened));
                 invalidateOptionsMenu();
             }
 
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 System.out.println("Inside on drawer closed");
-
-                //getSupportActionBar().setTitle(mActivityTitle);
                 invalidateOptionsMenu();
             }
         };

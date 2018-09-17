@@ -1,10 +1,8 @@
 package com.mobioetech.keralathodoppam.keralathodoppam;
 
-import android.animation.Animator;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -16,8 +14,6 @@ public class CampRequirementZoomActivity extends AppCompatActivity {
     private static final String LOG = "CampRequirementZoom";
     String needs_url,imagePath;
     CampNeeds campNeeds;
-    private Animator mCurrentAnimator;
-    private int mShortAnimationDuration;
 
     @BindView(R.id.expanded_image)
     ImageView expandedImageView;
@@ -38,7 +34,6 @@ public class CampRequirementZoomActivity extends AppCompatActivity {
         imagePath = campNeeds.getImagePath();
 
         getSupportActionBar().setTitle(campNeeds.getCampname());
-        Log.i(LOG,"needs_url--expandedImageView--->"+needs_url+","+expandedImageView);
 
         Picasso.get()
                 .load(needs_url)

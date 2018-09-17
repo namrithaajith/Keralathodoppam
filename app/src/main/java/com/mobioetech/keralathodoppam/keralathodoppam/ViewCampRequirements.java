@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -22,7 +23,7 @@ import butterknife.ButterKnife;
 
 public class ViewCampRequirements extends AppCompatActivity {
     private static final String LOG = "ViewCampRequirements";
-    String selectedDistrict;
+    String selectedDistrict,selectedDistrict_eng;
     FirebaseRecyclerAdapter adapter;
 
 
@@ -31,6 +32,9 @@ public class ViewCampRequirements extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+    @BindView(R.id.emptyTextView)
+    TextView mEmptyListMessage;
 
     private FirebaseDatabase database = null;
 
@@ -46,6 +50,50 @@ public class ViewCampRequirements extends AppCompatActivity {
         getSupportActionBar().setTitle(getResources().getString(R.string.campneeds));
 
         selectedDistrict = getIntent().getStringExtra("selecteddistrict");
+
+        if(selectedDistrict.equals(getResources().getString(R.string.ernakulam_mal))){
+            selectedDistrict_eng = getResources().getString(R.string.ernakulam_eng);
+        }
+        else if(selectedDistrict.equals(getResources().getString(R.string.thrissur_mal))){
+            selectedDistrict_eng = getResources().getString(R.string.thrissur_eng);
+        }
+        else if(selectedDistrict.equals(getResources().getString(R.string.pathanamthitta_mal))){
+            selectedDistrict_eng = getResources().getString(R.string.pathanamthitta_eng);
+        }
+        else if(selectedDistrict.equals(getResources().getString(R.string.alappuzha_mal))){
+            selectedDistrict_eng = getResources().getString(R.string.alappuzha_eng);
+        }
+        else if(selectedDistrict.equals(getResources().getString(R.string.kollam_mal))){
+            selectedDistrict_eng = getResources().getString(R.string.kollam_eng);
+        }
+        else if(selectedDistrict.equals(getResources().getString(R.string.kottayam_mal))){
+            selectedDistrict_eng = getResources().getString(R.string.kottayam_eng);
+        }
+        else if(selectedDistrict.equals(getResources().getString(R.string.kannur_mal))){
+            selectedDistrict_eng = getResources().getString(R.string.kannur_eng);
+        }
+        else if(selectedDistrict.equals(getResources().getString(R.string.wayanad_mal))){
+            selectedDistrict_eng = getResources().getString(R.string.wayanad_eng);
+        }
+        else if(selectedDistrict.equals(getResources().getString(R.string.palakkad_mal))){
+            selectedDistrict_eng = getResources().getString(R.string.palakkad_eng);
+        }
+        else if(selectedDistrict.equals(getResources().getString(R.string.idukki_mal))){
+            selectedDistrict_eng = getResources().getString(R.string.idukki_eng);
+        }
+        else if(selectedDistrict.equals(getResources().getString(R.string.alappuzha_mal))){
+            selectedDistrict_eng = getResources().getString(R.string.alappuzha_eng);
+        }
+        else if(selectedDistrict.equals(getResources().getString(R.string.thiruvananthapuram_mal))){
+            selectedDistrict_eng = getResources().getString(R.string.thiruvananthapuram_eng);
+        }
+        else if(selectedDistrict.equals(getResources().getString(R.string.kasaragod_mal))){
+            selectedDistrict_eng = getResources().getString(R.string.kasaragod_eng);
+        }
+        else if(selectedDistrict.equals(getResources().getString(R.string.kozhikode_mal))){
+            selectedDistrict_eng = getResources().getString(R.string.kozhikode_eng);
+        }
+
         database = KeralathodoppamDBUtil.getInstance();
 
         setupFirebaseadapter();
@@ -64,7 +112,7 @@ public class ViewCampRequirements extends AppCompatActivity {
     }
 
     private void setupFirebaseadapter(){
-        ref_camprequirements = database.getReference().child(KeralathodoppamConstants.KERALA).child(KeralathodoppamConstants.CAMPS).child(selectedDistrict);
+        ref_camprequirements = database.getReference().child(KeralathodoppamConstants.KERALA).child(KeralathodoppamConstants.CAMPS).child(selectedDistrict_eng);
         FirebaseRecyclerOptions<CampNeeds> options =
                 new FirebaseRecyclerOptions.Builder<CampNeeds>()
                         .setQuery(ref_camprequirements,CampNeeds.class)
@@ -81,6 +129,11 @@ public class ViewCampRequirements extends AppCompatActivity {
             }
 
             @Override
+            public void onDataChanged() {
+                mEmptyListMessage.setVisibility(getItemCount() == 0 ? View.VISIBLE : View.GONE);
+            }
+
+            @Override
             protected void onBindViewHolder(@NonNull FirebaseCampNeedsViewHolder holder, int position, @NonNull CampNeeds model) {
                 try {
                     holder.bindCampNeeds(model);
@@ -88,6 +141,7 @@ public class ViewCampRequirements extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+
         };
         rcv.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

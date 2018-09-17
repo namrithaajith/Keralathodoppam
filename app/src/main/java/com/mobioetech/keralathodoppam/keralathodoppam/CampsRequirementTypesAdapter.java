@@ -12,10 +12,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-/**
- * Created by ajithkp on 19/06/17.
- */
-
 public class CampsRequirementTypesAdapter extends RecyclerView.Adapter<CampsRequirementTypesAdapter.ViewHolder> {
 
     private ArrayList<SevanamTypes> sevanamTypes;
@@ -44,33 +40,6 @@ public class CampsRequirementTypesAdapter extends RecyclerView.Adapter<CampsRequ
         Picasso.get().load(resID)
                 .into(holder.img_category);
 
-
-//        holder.mView.setOnClickListener(new View.OnClickListener(){
-//
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = null;
-//                switch(position){
-//                    case 0:intent = new Intent(context,JewelleriesMainActivity.class);
-//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        context.startActivity(intent);
-//                            break;
-//                    case 1:intent = new Intent(context,TransportMainActivity.class);
-//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        context.startActivity(intent);
-//                        break;
-//                    case 2:intent = new Intent(context,OrganicMainActivity.class);
-//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        context.startActivity(intent);
-//                        break;
-//                    case 3:intent = new Intent(context,EventsMainActivity.class);
-//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        context.startActivity(intent);
-//                        break;
-//                }
-//
-//            }
-//        });
     }
 
     @Override

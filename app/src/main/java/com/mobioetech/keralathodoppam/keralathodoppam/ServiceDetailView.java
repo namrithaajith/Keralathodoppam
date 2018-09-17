@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -63,12 +62,10 @@ public class ServiceDetailView extends AppCompatActivity {
 
         database = KeralathodoppamDBUtil.getInstance();
         ref_serviceperson = KeralathodoppamDBUtil.getInstance().getReference().child(KeralathodoppamConstants.KERALA).child(KeralathodoppamConstants.SEVANAM).child(SevanamFragment.serviceType).child(phonenumber);
-        Log.i(LOG,"ref_serviceperson------->"+ref_serviceperson);
         ref_serviceperson.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final Person person = dataSnapshot.getValue(Person.class);
-                Log.i(LOG,"person.getName()------>"+person.getName());
                 mtvNameView.setText(person.getName());
                 mtvPhoneView.setText(person.getPhonenumber());
                 mEtAreaofservice.setText(person.getServicetype());

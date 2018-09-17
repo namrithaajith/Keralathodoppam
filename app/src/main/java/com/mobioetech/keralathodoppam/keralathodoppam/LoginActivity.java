@@ -15,7 +15,6 @@ import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
@@ -28,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
     private static final String LOG = "loginactivity";
     private static final int RC_SIGN_IN = 100;
     private FirebaseDatabase database = null;
-    private DatabaseReference ref_registered,ref_verified;
     private FirebaseAuth auth;
 
     @BindView(R.id.coordinator_layout)
@@ -46,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         database = KeralathodoppamDBUtil.getInstance();
-        Log.i(LOG,"Log in activity");
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(
                         AuthUI.getInstance().createSignInIntentBuilder()
                                 .setTheme(R.style.AppTheme)
-                                //.setLogo(R.drawable.ic_launcher)
+                                .setLogo(R.mipmap.ic_launcher)
                                 .setAvailableProviders(providers)
                                 //.setIsSmartLockEnabled(true)
                                 .build(),
@@ -80,40 +77,31 @@ public class LoginActivity extends AppCompatActivity {
     @MainThread
     private void handleSignInResponse(int resultCode, Intent data) {
         IdpResponse response = IdpResponse.fromResultIntent(data);
-        Log.i(LOG, "Inside handle sign in response");
         // Successfully signed in
         if (resultCode == RESULT_OK) {
-            Log.i(LOG,"owner phone no----"+auth.getCurrentUser().getPhoneNumber()+" , "+auth.getCurrentUser().getUid());
-            //startActivity(MainActivity.createIntent(MainActivity.this));
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-
-            Log.i(LOG,"Successfully Signed in");
-
             return;
         } else {
             // Sign in failed
             if (response == null) {
                 // User pressed back button
                 showSnackbar(R.string.sign_in_cancelled);
-                Log.i(LOG, getResources().getString(R.string.sign_in_cancelled));
                 return;
             }
 
             if (response.getError().getErrorCode() == ErrorCodes.NO_NETWORK) {
                 showSnackbar(R.string.no_internet_connection);
-                Log.i(LOG, getResources().getString(R.string.no_internet_connection));
                 return;
             }
 
             if (response.getError().getErrorCode() == ErrorCodes.UNKNOWN_ERROR) {
                 showSnackbar(R.string.unknown_error);
-                Log.i(LOG, getResources().getString(R.string.unknown_error));
                 return;
             }
         }
 
-        //showSnackbar(R.string.unknown_sign_in_response);
+        showSnackbar(R.string.unknown_sign_in_response);
     }
     @MainThread
     private void showSnackbar(@StringRes int errorMessageRes) {

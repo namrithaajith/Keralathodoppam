@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
@@ -36,12 +37,13 @@ public class SevanamListViewFragment extends Fragment implements GeoQueryEventLi
     private DatabaseReference geofireref,ref_serviceperson;
     private GeoFire geoFire;
     private GeoQuery geoQuery;
-    //public static ArrayList phonenumbers;
     public static ArrayList<Person> person_al;
     ServicePersonsAdapter adapter;
 
     @BindView(R.id.recycler_view)
     RecyclerView rcv_sevanam;
+    @BindView(R.id.emptyTextView)
+    TextView mEmptyListMessage;
     public SevanamListViewFragment() {
 
     }
@@ -51,14 +53,10 @@ public class SevanamListViewFragment extends Fragment implements GeoQueryEventLi
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_sevanamlistview, container, false);
-        //phonenumbers = new ArrayList<>();
         person_al = new ArrayList<Person>();
         person_al.clear();
 
         ButterKnife.bind(this, view);
-
-
-        Log.i(LOG,"serviceType----->"+serviceType);
 
         GeoLocation INITIAL_CENTER = new GeoLocation(SevanamFragment.currentlatitude, SevanamFragment.currentlongitude);
 
@@ -77,9 +75,7 @@ public class SevanamListViewFragment extends Fragment implements GeoQueryEventLi
         rcv_sevanam.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         rcv_sevanam.setLayoutManager(layoutManager);
-        //Log.i(LOG,"beginning phonenumbers---------"+phonenumbers);
 
-        //adapter = new ServicePersonsAdapter(getActivity(), phonenumbers);
         adapter = new ServicePersonsAdapter(getActivity(), person_al);
         rcv_sevanam.setAdapter(adapter);
 
@@ -89,20 +85,17 @@ public class SevanamListViewFragment extends Fragment implements GeoQueryEventLi
 
     @Override
     public void onKeyEntered(String key, GeoLocation location) {
-
-        //phonenumbers.add(key);
         ref_serviceperson = KeralathodoppamDBUtil.getInstance().getReference().child(KeralathodoppamConstants.KERALA).child(KeralathodoppamConstants.SEVANAM).child(SevanamFragment.serviceType).child(key);
-        Log.i(LOG,"ref_servicepersonon key entered------->"+ref_serviceperson);
         ref_serviceperson.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Person person = dataSnapshot.getValue(Person.class);
                 person_al.add(person);
-                Log.i(LOG,"person_al-------->"+person_al);
+                mEmptyListMessage.setVisibility(person_al.size() == 0 ? View.VISIBLE : View.GONE);
                 ServicePersonsAdapter adapter = new ServicePersonsAdapter(getActivity(), person_al);
                 rcv_sevanam.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
+                //adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -118,9 +111,6 @@ public class SevanamListViewFragment extends Fragment implements GeoQueryEventLi
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onKeyExited(String key) {
-        //phonenumbers.remove(key);
-        Log.i(LOG,"on key exited called------person_al"+person_al);
-
         Iterator<Person> it = person_al.iterator();
         while (it.hasNext()) {
             Person person = it.next();
@@ -129,37 +119,10 @@ public class SevanamListViewFragment extends Fragment implements GeoQueryEventLi
                 person_al.remove(it);
             }
         }
-        Log.i(LOG,"on key exited called------person_al after removal------"+person_al);
+        mEmptyListMessage.setVisibility(person_al.size() == 0 ? View.VISIBLE : View.GONE);
         ServicePersonsAdapter adapter = new ServicePersonsAdapter(getActivity(), person_al);
         rcv_sevanam.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-
-//        ref_serviceperson = KeralathodoppamDBUtil.getInstance().getReference().child(KeralathodoppamConstants.KERALA).child(KeralathodoppamConstants.SEVANAM).child(SevanamFragment.serviceType).child(key);
-//        ref_serviceperson.addListenerForSingleValueEvent(new ValueEventListener() {
-//
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                Person person = dataSnapshot.getValue(Person.class);
-//                Log.i(LOG,"person_al.size before----"+person_al.size());
-//                person_al.remove(person);
-//                for(int i=0 ;i<person_al.size();i++){
-//                    if(person.getPhonenumber()==person_al.get(i).getPhonenumber()){
-//                        person_al.remove(person);
-//                    }
-//                }
-//                Log.i(LOG,"person_al.size after----"+person_al.size());
-//                //Log.i(LOG,"on key exited called------person_al"+person_al);
-//                ServicePersonsAdapter adapter = new ServicePersonsAdapter(getActivity(), person_al);
-//                rcv_sevanam.setAdapter(adapter);
-//                adapter.notifyDataSetChanged();
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+        //adapter.notifyDataSetChanged();
 
     }
 

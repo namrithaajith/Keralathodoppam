@@ -33,7 +33,6 @@ public class FirebaseCampNeedsViewHolder extends RecyclerView.ViewHolder{
     public FirebaseCampNeedsViewHolder(View itemView) {
         super(itemView);
         mView = itemView;
-
         mContext = itemView.getContext();
 
     }
@@ -70,27 +69,7 @@ public class FirebaseCampNeedsViewHolder extends RecyclerView.ViewHolder{
         final String date = DateFormat.format("dd-MM-yyyy hh:mm:ss", cal).toString();
 
         ImageView imvShare = (ImageView) mView.findViewById(R.id.imv_share);
-//        imvShare.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if(filePath != null){
-//                    shareImage();
-//                }
-//                else {
-//                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-//                    sharingIntent.setType("text/plain");
-//                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, campNeeds.getCampname());
-//                    String share_text = campNeeds.getCampname()+"\n"+date +"\n"+mContext.getResources().getString(R.string.needs)+" \n "+campNeeds.getNeeds();
-//
-//                    sharingIntent.putExtra(Intent.EXTRA_TEXT, share_text);
-//                    mContext.startActivity(Intent.createChooser(sharingIntent, mContext.getResources().getString(R.string.share_chooser)));
-//
-//                }
-//
-//
-//            }
-//        });
+
         imvShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

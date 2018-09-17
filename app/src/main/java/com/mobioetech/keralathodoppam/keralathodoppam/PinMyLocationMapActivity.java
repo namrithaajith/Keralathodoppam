@@ -6,13 +6,13 @@ import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -58,12 +58,6 @@ public class PinMyLocationMapActivity extends AppCompatActivity implements OnMap
         }
 
         String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-//        String locality = addresses.get(0).getLocality();
-//        String district = addresses.get(0).getSubAdminArea();
-//        String state = addresses.get(0).getAdminArea();
-//        String country = addresses.get(0).getCountryName();
-//        String postalCode = addresses.get(0).getPostalCode();
-//        String knownName = addresses.get(0).getFeatureName();
         tvaddress.setText(address);
 
 
@@ -101,7 +95,7 @@ public class PinMyLocationMapActivity extends AppCompatActivity implements OnMap
         LatLng latlng = new LatLng(SevanamFragment.currentlatitude,SevanamFragment.currentlongitude);
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(SevanamFragment.currentlatitude, SevanamFragment.currentlongitude), INITIAL_ZOOM_LEVEL));
         map.addMarker(new MarkerOptions().position(latlng)
-                .title(getResources().getString(R.string.markerdrag))
+                .title(getResources().getString(R.string.markerdrag)).icon(BitmapDescriptorFactory.fromResource(R.drawable.pin))
         .draggable(true));
 
         map.moveCamera(CameraUpdateFactory.newLatLng(latlng));
@@ -120,7 +114,6 @@ public class PinMyLocationMapActivity extends AppCompatActivity implements OnMap
 
     @Override
     public void onMarkerDragEnd(Marker marker) {
-        Log.i(LOG,"onMarkerDragEnd------->"+marker.getPosition().latitude+","+marker.getPosition().longitude);
         pinnedlatitude = marker.getPosition().latitude;
         pinnedlongitude = marker.getPosition().longitude;
 
@@ -133,12 +126,6 @@ public class PinMyLocationMapActivity extends AppCompatActivity implements OnMap
         }
 
         String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-//        String locality = addresses.get(0).getLocality();
-//        String district = addresses.get(0).getSubAdminArea();
-//        String state = addresses.get(0).getAdminArea();
-//        String country = addresses.get(0).getCountryName();
-//        String postalCode = addresses.get(0).getPostalCode();
-//        String knownName = addresses.get(0).getFeatureName();
         tvaddress.setText(address);
         pinnedaddress = address;
 

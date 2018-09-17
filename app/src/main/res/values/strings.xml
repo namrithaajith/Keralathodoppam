@@ -13,12 +13,12 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
     <string name="permissions_not_granted_location_access">App needs to access the device location</string>
-    <string name="permission_denied">App wasnt granted permission.Grant now</string>
+    <string name="permission_denied">App was not granted permission.Grant now</string>
     <string name="permission">Permission Request</string>
     <string name="permission_callphone">App needs to CALLPHONE permission to make phone calls</string>
     <string name="share_chooser">Share via</string>
 
-    <string name="login">Login</string>
+    <string name="login">ലോഗിൻ</string>
     <string name="login_header">നമുക്ക് കൈകോർക്കാം</string>
     <string name="submission_successful">നിങ്ങളുടെ വിവരങ്ങൾ വിജയകരമായി സമർപ്പിച്ചു</string>
     <string name="menu_home">ഹോം</string>
@@ -87,23 +87,63 @@
     </string-array>
 
     <string-array name="districts">
-        <item>BANGALORE URBAN</item>
-        <item>ERNAKULAM</item>
-        <item>THRISSUR</item>
-        <item>PATHANAMTHITTA</item>
-        <item>ALAPPUZHA</item>
-        <item>WAYANAD</item>
-        <item>KOZHIKODE</item>
-        <item>IDUKKI</item>
-        <item>KANNUR</item>
-        <item>KASARAGOD</item>
-        <item>KOLLAM</item>
-        <item>KOTTAYAM</item>
-        <item>MALAPPURAM</item>
-        <item>PALAKKAD</item>
-
-        <item>THIRUVANANTHAPURAM</item>
+        <item>എറണാകുളം</item>
+        <item>തൃശ്ശൂർ</item>
+        <item>പത്തനംതിട്ട</item>
+        <item>ആലപ്പുഴ</item>
+        <item>വയനാട്</item>
+        <item>കോഴിക്കോട്</item>
+        <item>ഇടുക്കി</item>
+        <item>കണ്ണൂർ</item>
+        <item>കാസർഗോഡ്</item>
+        <item>കൊല്ലം</item>
+        <item>കോട്ടയം</item>
+        <item>മലപ്പുറം</item>
+        <item>പാലക്കാട്</item>
+        <item>തിരുവനന്തപുരം</item>
     </string-array>
+    <string name="ernakulam_eng">ERNAKULAM</string>
+    <string name="ernakulam_mal">എറണാകുളം</string>
+
+    <string name="thrissur_eng">THRISSUR</string>
+    <string name="thrissur_mal">തൃശ്ശൂർ</string>
+
+    <string name="pathanamthitta_eng">PATHANAMTHITTA</string>
+    <string name="pathanamthitta_mal">പത്തനംതിട്ട</string>
+
+    <string name="alappuzha_eng">ALAPPUZHA</string>
+    <string name="alappuzha_mal">ആലപ്പുഴ</string>
+
+    <string name="wayanad_eng">WAYANAD</string>
+    <string name="wayanad_mal">വയനാട്</string>
+
+    <string name="kozhikode_eng">KOZHIKODE</string>
+    <string name="kozhikode_mal">കോഴിക്കോട്</string>
+
+    <string name="idukki_eng">IDUKKI</string>
+    <string name="idukki_mal">ഇടുക്കി</string>
+
+    <string name="kannur_eng">KANNUR</string>
+    <string name="kannur_mal">കണ്ണൂർ</string>
+
+    <string name="kasaragod_eng">KASARAGOD</string>
+    <string name="kasaragod_mal">കാസർഗോഡ്</string>
+
+    <string name="kollam_eng">KOLLAM</string>
+    <string name="kollam_mal">കൊല്ലം</string>
+
+    <string name="kottayam_eng">KOTTAYAM</string>
+    <string name="kottayam_mal">കോട്ടയം</string>
+
+    <string name="malappuram_eng">MALAPPURAM</string>
+    <string name="malappuram_mal">മലപ്പുറം</string>
+
+    <string name="palakkad_eng">PALAKKAD</string>
+    <string name="palakkad_mal">പാലക്കാട്</string>
+
+    <string name="thiruvananthapuram_eng">THIRUVANANTHAPURAM</string>
+    <string name="thiruvananthapuram_mal">തിരുവനന്തപുരം</string>
+
 
     <string name="hint_name">നിങ്ങളുടെ പേര് നൽകുക</string>
     <string name="hint_phone">നിങ്ങളുടെ മൊബൈൽ നമ്പർ</string>
@@ -114,7 +154,7 @@
     <string name="hint_address">നിങ്ങളുടെ വിലാസം</string>
     <string name="hint_asktoclickmap">ദയവായി മാപ്പ് ഐക്കൺ ക്ലിക്കുചെയ്ത് കൃത്യമായ വിലാസം അടയാളപ്പെടുത്തുക</string>
     <string name="hint_requiredservice">നിങ്ങൾക്ക് ആവശ്യമുള്ള സേവനം</string>
-    <string name="markerdrag">നിങ്ങളുടെ ലൊക്കേഷനിലേക്ക് മാർക്കർ ക്ലിക്കുചെയ്ത് വലിച്ചിടുക</string>
+    <string name="markerdrag">ലൊക്കേഷനിലേക്ക് ക്ലിക്കുചെയ്ത് വലിച്ചിടുക</string>
     <string name="selectpic">തിരഞ്ഞെടുക്കുക</string>
     <string name="takephoto">ഫോട്ടോ എടുക്കുക</string>
     <string name="submit">സമർപ്പിക്കുക</string>
@@ -125,6 +165,7 @@
     <string name="needs">ആവശ്യമുള്ളത്</string>
     <string name="campneeds">ക്യാമ്പുകളുടെ അവശ്യങ്ങൾ കാണുക</string>
     <string name="information">നിങ്ങൾ അറിയേണ്ട കാര്യങ്ങൾ</string>
+    <string name="nodata">നിങ്ങൾ തിരയുന്ന വിവരങ്ങൾ ലഭിക്കാൻ ദയവായി കാത്തിരിക്കുക</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

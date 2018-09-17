@@ -27,7 +27,6 @@ public class WhoRequireServiceMapActivity extends AppCompatActivity implements O
         setContentView(R.layout.activity_who_require_service_map);
         serviceRequest = (ServiceRequest) getIntent().getSerializableExtra("serviceRequest");
         phone_number = serviceRequest.getPhonenumber();
-        Log.i(LOG,"phone_number---------"+phone_number);
         pinned_latitude = serviceRequest.getPinnedlatitude();
         pinned_longitude = serviceRequest.getPinnedlongitude();
         current_latitude = serviceRequest.getCurrentlatitude();
@@ -58,7 +57,6 @@ public class WhoRequireServiceMapActivity extends AppCompatActivity implements O
         map.setIndoorEnabled(true);
         map.setBuildingsEnabled(true);
         map.getUiSettings().setZoomControlsEnabled(true);
-        Log.i(LOG,"pinned_latitude----->"+pinned_latitude);
         if(pinned_latitude == 0.0){
             latlng = new LatLng(current_latitude,current_longitude);
         }else{

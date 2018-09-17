@@ -13,10 +13,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-/**
- * Created by ajithkp on 19/06/17.
- */
-
 public class GetSevanamAdapter extends RecyclerView.Adapter<GetSevanamAdapter.ViewHolder> {
 
     private ArrayList<SevanamTypes> sevanamTypes;

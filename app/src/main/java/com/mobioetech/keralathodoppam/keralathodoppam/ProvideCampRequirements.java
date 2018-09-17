@@ -5,17 +5,16 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
-import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.media.ExifInterface;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -108,7 +107,6 @@ public class ProvideCampRequirements extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //chooseImage();
                 onLaunchCamera();
             }
         });
@@ -262,10 +260,6 @@ public class ProvideCampRequirements extends AppCompatActivity {
 
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
-        ExifInterface exif = new ExifInterface(mCurrentPhotoPath);
-        exif.getAttribute(ExifInterface.TAG_ORIENTATION);
-
-        Log.i(LOG,"mCurrentPhotoPath----exif.getAttribute(ExifInterface.TAG_ORIENTATION)---->"+mCurrentPhotoPath+","+exif.getAttribute(ExifInterface.TAG_ORIENTATION));
         return image;
     }
 
@@ -277,7 +271,6 @@ public class ProvideCampRequirements extends AppCompatActivity {
             File photoFile = null;
             try {
                 photoFile = createImageFile();
-                Log.i(LOG,"photoFile---------->"+photoFile);
             } catch (IOException ex) {
                 // Error occurred while creating the File
 
@@ -287,7 +280,6 @@ public class ProvideCampRequirements extends AppCompatActivity {
                 Uri photoURI = FileProvider.getUriForFile(this,
                         "com.mobioetech.keralathodoppam.keralathodoppam",
                         photoFile);
-                Log.i(LOG,"photoURI---------->"+photoURI);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_PICTURE_CAPTURE);
             }
@@ -298,7 +290,6 @@ public class ProvideCampRequirements extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        Log.i(LOG,"requestCode------->"+requestCode);
             if (requestCode == REQUEST_PICTURE_CAPTURE && resultCode == RESULT_OK) {
 
                 try {
@@ -309,7 +300,6 @@ public class ProvideCampRequirements extends AppCompatActivity {
 
                 File f = new File(mCurrentPhotoPath);
                 filePath = Uri.fromFile(f);
-                Log.i(LOG,"filepath---------->"+filePath);
 
             }
 
@@ -320,7 +310,6 @@ public class ProvideCampRequirements extends AppCompatActivity {
         // Get the dimensions of the View
         int targetW = imgselected.getWidth();
         int targetH = imgselected.getHeight();
-        Log.i(LOG,"mCurrentPhotoPath-- in provide camp requirements---->"+mCurrentPhotoPath+","+targetW);
         // Get the dimensions of the bitmap
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
         bmOptions.inJustDecodeBounds = true;
@@ -344,7 +333,6 @@ public class ProvideCampRequirements extends AppCompatActivity {
                 ExifInterface.ORIENTATION_UNDEFINED);
 
         Bitmap rotatedBitmap = null;
-        Log.i(LOG,"Orientation------>"+orientation);
         switch(orientation) {
 
             case ExifInterface.ORIENTATION_ROTATE_90:

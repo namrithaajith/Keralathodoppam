@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -49,13 +48,11 @@ public class SplashActivity extends AppCompatActivity {
     private void launchActivity() {
 
         if(auth.getCurrentUser() != null){
-            Log.i(LOG,"auth.getCurrentUser(------->"+auth.getCurrentUser().getPhoneNumber());
             Intent intent = new Intent(SplashActivity.this ,MainActivity.class);
             startActivity(intent);
 
         }
         else{
-            Log.i(LOG,"owner not logged in");
             Intent intent = new Intent(SplashActivity.this ,LoginActivity.class);
             startActivity(intent);
         }

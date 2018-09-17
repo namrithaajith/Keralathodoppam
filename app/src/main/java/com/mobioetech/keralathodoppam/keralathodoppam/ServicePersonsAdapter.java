@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +23,6 @@ import com.google.firebase.database.DatabaseReference;
 import java.util.ArrayList;
 
 public class ServicePersonsAdapter extends RecyclerView.Adapter<ServicePersonsAdapter.ViewHolder> {
-    //private ArrayList<String> phonenumbers;
     private ArrayList<Person> person_al;
     private Context context;
     private static final String LOG = "sevanamAdapter";
@@ -57,15 +55,6 @@ public class ServicePersonsAdapter extends RecyclerView.Adapter<ServicePersonsAd
                 holder.tv_place.setText(person_al.get(position).getLocality() + ","+person_al.get(position).getDistrict());
             }
 
-            holder.tv_phone.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    Intent intent = new Intent(context,ServiceDetailView.class);
-                    intent.putExtra("phonenumber",person_al.get(position).getPhonenumber());
-                    context.startActivity(intent);
-                }
-            });
             holder.btn_call.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -82,7 +71,6 @@ public class ServicePersonsAdapter extends RecyclerView.Adapter<ServicePersonsAd
 
                     Intent callIntent = new Intent(Intent.ACTION_CALL);
                     callIntent.setData(Uri.parse("tel:"+person_al.get(position).getPhonenumber()));
-                    Log.i(LOG,"Phone number------>"+person_al.get(position).getPhonenumber());
                     if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                         if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) context,
                                 Manifest.permission.CALL_PHONE)) {
@@ -136,6 +124,15 @@ public class ServicePersonsAdapter extends RecyclerView.Adapter<ServicePersonsAd
             tv_place = (TextView)view.findViewById(R.id.place);
             btn_call = (ImageView)view.findViewById(R.id.btn_call);
             tv_service = (TextView) view.findViewById(R.id.servicetype);
+            mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context,ServiceDetailView.class);
+                    intent.putExtra("phonenumber",tv_phone.getText());
+                    context.startActivity(intent);
+                }
+            });
         }
+
     }
 }

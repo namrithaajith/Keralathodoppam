@@ -12,10 +12,14 @@
     <dimen name="margin_12">12dp</dimen>
     <dimen name="margin_16">16dp</dimen>
     <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_24">24dp</dimen>
+    <dimen name="margin_30">30dp</dimen>
     <dimen name="margin_64">64dp</dimen>
     <dimen name="margin_48">48dp</dimen>
     <dimen name="margin_80">80dp</dimen>
     <dimen name="margin_90">90dp</dimen>
+    <dimen name="margin_96">96dp</dimen>
+    <dimen name="margin_100">100dp</dimen>
     <dimen name="margin_120">120dp</dimen>
     <dimen name="padding_8">8dp</dimen>
     <dimen name="list_image_height">160dp</dimen>
@@ -28,6 +32,7 @@
     <dimen name="normalText_sp_14">14sp</dimen>
     <dimen name="subHeader_sp_16">16sp</dimen>
     <dimen name="title">17sp</dimen>
+    <dimen name="submissionsuccessful">26sp</dimen>
 
     <dimen name="button_height">56dp</dimen>
     <dimen name="button_marginLeft">60dp</dimen>

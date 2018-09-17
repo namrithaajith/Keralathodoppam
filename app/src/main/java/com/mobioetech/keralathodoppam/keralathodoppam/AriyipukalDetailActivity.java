@@ -2,7 +2,6 @@ package com.mobioetech.keralathodoppam.keralathodoppam;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,7 +31,6 @@ public class AriyipukalDetailActivity extends AppCompatActivity {
         supportimage = ariyippukal.getSupport_image();
         tvDetails.setText(details);
         tvHeading.setText(heading);
-        Log.i(LOG,"supportimage----->"+supportimage.length());
         if(supportimage != null ){
             Picasso.get()
                     .load(supportimage)

@@ -15,14 +15,14 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingTop="30dp">
+            android:paddingTop="@dimen/margin_30">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp">
+                android:layout_marginBottom="@dimen/margin_20"
+                android:layout_marginLeft="@dimen/margin_30"
+                android:layout_marginRight="@dimen/margin_30">
 
                 <EditText
                     android:id="@+id/et_name"
@@ -38,9 +38,9 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp">
+                android:layout_marginBottom="@dimen/margin_20"
+                android:layout_marginLeft="@dimen/margin_30"
+                android:layout_marginRight="@dimen/margin_30">
 
                 <EditText
                     android:id="@+id/et_phone"
@@ -60,9 +60,9 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp">
+                android:layout_marginBottom="@dimen/margin_20"
+                android:layout_marginLeft="@dimen/margin_30"
+                android:layout_marginRight="@dimen/margin_30">
 
                 <EditText
                     android:id="@+id/et_locality"
@@ -78,9 +78,9 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp">
+                android:layout_marginBottom="@dimen/margin_20"
+                android:layout_marginLeft="@dimen/margin_30"
+                android:layout_marginRight="@dimen/margin_30">
 
                 <EditText
                     android:id="@+id/et_district"
@@ -141,8 +141,8 @@
 
             <ImageView
                 android:id="@+id/imgView"
-                android:layout_width="160dp"
-                android:layout_height="160dp" />
+                android:layout_width="@dimen/list_image_height"
+                android:layout_height="@dimen/list_image_height" />
 
 
             <TextView
@@ -153,10 +153,8 @@
                 android:layout_marginLeft="@dimen/button_marginLeft"
                 android:layout_marginRight="@dimen/button_marginRight"
                 android:layout_marginTop="@dimen/button_marginTop"
-                android:background="@drawable/button_cornered"
-                android:backgroundTint="@color/text_color"
+                android:background="@color/colorPrimary"
                 android:gravity="center"
-                android:imeOptions="actionDone"
                 android:text="@string/submit"
                 android:textAllCaps="true"
                 android:textColor="@color/white"

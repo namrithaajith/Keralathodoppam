@@ -198,8 +198,6 @@ public class SevanamFragment extends Fragment implements GoogleApiClient.Connect
             currentlatitude = mLastLocation.getLatitude();
             currentlongitude = mLastLocation.getLongitude();
 
-            Log.i(LOG, "currentlatitude---currentlongitude--" + currentlatitude + "," + currentlongitude);
-
             Geocoder gcd = new Geocoder(getContext(), Locale.getDefault());
             List<Address> addresses = null;
             try {
@@ -210,7 +208,6 @@ public class SevanamFragment extends Fragment implements GoogleApiClient.Connect
             if (addresses != null && addresses.size() > 0) {
                 currentdistrict = addresses.get(0).getSubAdminArea();
                 currentlocality = addresses.get(0).getLocality();
-                Log.i(LOG, "currentdistrict--locality---" + currentdistrict+"-----"+currentlocality);
             }
 
             }

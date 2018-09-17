@@ -18,7 +18,7 @@
             android:layout_marginBottom="@dimen/margin_4"
             android:clickable="true"
             android:focusable="true"
-            android:foreground="?selectableItemBackground"
+            android:foreground="?android:selectableItemBackground"
             app:cardElevation="@dimen/cardview_default_elevation">
             <RelativeLayout
                 android:layout_width="match_parent"

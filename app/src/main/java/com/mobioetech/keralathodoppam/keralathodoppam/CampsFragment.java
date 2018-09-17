@@ -19,7 +19,6 @@ public class CampsFragment extends Fragment {
     @BindView(R.id.recycler_view)
     RecyclerView rcv_camps;
 
-
     public CampsFragment() {
     }
 

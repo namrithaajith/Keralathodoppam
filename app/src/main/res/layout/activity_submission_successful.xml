@@ -13,16 +13,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="@dimen/margin_100"
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/iv_logo"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="@dimen/margin_64"
+                android:layout_height="@dimen/margin_64"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"/>
+                android:layout_margin="@dimen/margin_10"/>
             <!--android:src="@drawable/group" />-->
 
             <LinearLayout
@@ -36,7 +36,7 @@
                     android:layout_toRightOf="@+id/iv_logo"
                     android:text="@string/app_name_malayalam"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/smallText_sp_12"
                     android:textStyle="bold" />
 
                 <TextView
@@ -45,7 +45,7 @@
                     android:layout_toRightOf="@+id/iv_logo"
                     android:text="@string/submission_successful"
                     android:textColor="@color/white"
-                    android:textSize="26sp"
+                    android:textSize="@dimen/submissionsuccessful"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
@@ -61,8 +61,8 @@
             android:layout_marginRight="@dimen/button_marginRight"
             android:background="@color/colorPrimary"
             android:gravity="center"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
+            android:paddingLeft="@dimen/margin_24"
+            android:paddingRight="@dimen/margin_24"
             android:text="@string/menu_home"
             android:textAllCaps="true"
             android:textColor="@color/white"

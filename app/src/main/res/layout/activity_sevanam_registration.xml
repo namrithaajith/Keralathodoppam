@@ -15,28 +15,28 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingTop="30dp">
+            android:paddingTop="@dimen/margin_30">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/givesevanam"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"/>
+                android:layout_marginLeft="@dimen/margin_30"
+                android:layout_marginRight="@dimen/margin_30"/>
 
             <ImageView
                 android:id="@+id/iv_avatar"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="20dp"
+                android:layout_width="@dimen/margin_80"
+                android:layout_height="@dimen/margin_80"
+                android:layout_margin="@dimen/margin_20"
                 android:src="@drawable/profile_avatar" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp">
+                android:layout_marginBottom="@dimen/margin_20"
+                android:layout_marginLeft="@dimen/margin_30"
+                android:layout_marginRight="@dimen/margin_30">
 
                 <EditText
                     android:id="@+id/et_name"
@@ -52,9 +52,9 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp">
+                android:layout_marginBottom="@dimen/margin_20"
+                android:layout_marginLeft="@dimen/margin_30"
+                android:layout_marginRight="@dimen/margin_30">
 
                 <EditText
                     android:id="@+id/et_phone"
@@ -74,9 +74,9 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp">
+                android:layout_marginBottom="@dimen/margin_20"
+                android:layout_marginLeft="@dimen/margin_30"
+                android:layout_marginRight="@dimen/margin_30">
 
                 <EditText
                     android:id="@+id/et_areaofservice"
@@ -92,9 +92,9 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp">
+                android:layout_marginBottom="@dimen/margin_20"
+                android:layout_marginLeft="@dimen/margin_30"
+                android:layout_marginRight="@dimen/margin_30">
 
                 <EditText
                     android:id="@+id/et_locality"
@@ -110,9 +110,9 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp">
+                android:layout_marginBottom="@dimen/margin_20"
+                android:layout_marginLeft="@dimen/margin_30"
+                android:layout_marginRight="@dimen/margin_30">
 
                 <EditText
                     android:id="@+id/et_district"
@@ -133,10 +133,8 @@
                 android:layout_marginLeft="@dimen/button_marginLeft"
                 android:layout_marginRight="@dimen/button_marginRight"
                 android:layout_marginTop="@dimen/button_marginTop"
-                android:background="@drawable/button_cornered"
-                android:backgroundTint="@color/text_color"
+                android:background="@color/colorPrimary"
                 android:gravity="center"
-                android:imeOptions="actionDone"
                 android:text="@string/submit"
                 android:textAllCaps="true"
                 android:textColor="@color/white"

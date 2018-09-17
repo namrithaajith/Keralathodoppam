@@ -15,8 +15,8 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="160dp"
-            android:layout_height="80dp"
+            android:layout_width="@dimen/list_image_height"
+            android:layout_height="@dimen/margin_80"
             android:id="@+id/img_type"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"/>
@@ -24,7 +24,7 @@
 
         <TextView
 
-            android:textSize="18sp"
+            android:textSize="@dimen/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
