@@ -36,10 +36,8 @@
             android:layout_weight="2">
             <TextView
                 android:id="@+id/personname"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:gravity="center_horizontal"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/title"
                 android:textStyle="bold" />
@@ -47,55 +45,60 @@
 
             <!-- address -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:id="@+id/linearlayoutphone"
+                android:weightSum="3">
 
                 <TextView
                     android:id="@+id/personphone"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/subHeader_sp_16"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:layout_weight="2"
+                    />
                 <ImageView
-                    android:layout_width="@dimen/margin_16"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/margin_16"
                     android:src="@drawable/ic_call"
                     android:layout_marginLeft="@dimen/margin_16"
                     android:id="@+id/phone_number"
+                    android:layout_weight="1"
                     />
-
-
             </LinearLayout>
-
-
 
             <TextView
                 android:id="@+id/address"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/subHeader_sp_16"
                 android:textStyle="bold"
                 android:minLines="4"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:id="@+id/linearlayoutmap"
+                android:weightSum="3">
                 <TextView
                     android:id="@+id/map"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/subHeader_sp_16"
                     android:textStyle="bold"
                     android:text="@string/viewonmap"
-                    android:paddingBottom="@dimen/margin_8"/>
+                    android:paddingBottom="@dimen/margin_8"
+                    android:layout_weight="2"/>
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/iconmap_marker"
-                    android:layout_marginLeft="@dimen/margin_16"
+                    android:layout_gravity="center_horizontal"
                     android:id="@+id/iv_map"
+                    android:layout_weight="1"
                     />
 
         </LinearLayout>

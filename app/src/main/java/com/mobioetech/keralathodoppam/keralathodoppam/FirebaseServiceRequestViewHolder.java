@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +34,8 @@ public class FirebaseServiceRequestViewHolder extends RecyclerView.ViewHolder{
 
 
     public void bindRequest(final ServiceRequest serviceRequest) {
+        LinearLayout maplayout = (LinearLayout) mView.findViewById(R.id.linearlayoutmap);
+        LinearLayout phonelayout = (LinearLayout) mView.findViewById(R.id.linearlayoutphone);
 
         TextView personname = (TextView) mView.findViewById(R.id.personname);
         personname.setText(serviceRequest.getName());
@@ -46,7 +49,7 @@ public class FirebaseServiceRequestViewHolder extends RecyclerView.ViewHolder{
         ImageView phone_numbercall = (ImageView) mView.findViewById(R.id.phone_number);
         ImageView mapView = (ImageView) mView.findViewById(R.id.iv_map);
 
-        mapView.setOnClickListener(new View.OnClickListener() {
+        maplayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext,WhoRequireServiceMapActivity.class);
@@ -54,7 +57,7 @@ public class FirebaseServiceRequestViewHolder extends RecyclerView.ViewHolder{
                 mContext.startActivity(intent);
             }
         });
-        phone_numbercall.setOnClickListener(new View.OnClickListener() {
+        phonelayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String phone_no = serviceRequest.getPhonenumber();

@@ -66,7 +66,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
-            Log.i(LOG, "Inside requestCode == RC_SIGN_IN");
             handleSignInResponse(resultCode, data);
             return;
         }
