@@ -188,13 +188,17 @@ public class SevanamMapViewFragment extends Fragment implements GeoQueryEventLis
         if(geoQuery != null) {
             this.geoQuery.removeAllListeners();
         }
-        for (Marker marker: this.markers.values()) {
-            this.markers.remove(key);
-            marker.remove();
+
+        if(this.markers != null){
+            for (Marker marker: this.markers.values()) {
+                this.markers.remove(key);
+                marker.remove();
 
 
+            }
+            this.markers.clear();
         }
-        this.markers.clear();
+
 
     }
 
